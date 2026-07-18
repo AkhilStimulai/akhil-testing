@@ -6,7 +6,7 @@ import { SITE_CONFIG } from '@/constants';
 
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-text-inverse/10 bg-surface-inverse text-text-inverse">
+    <footer className="relative isolate overflow-hidden border-t-0 md:border-t border-text-inverse/10 bg-surface-inverse text-text-inverse">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-base bg-[radial-gradient(circle_at_18%_10%,rgb(183_24_43/0.12),transparent_24%),radial-gradient(circle_at_86%_72%,rgb(255_255_255/0.06),transparent_28%)]"

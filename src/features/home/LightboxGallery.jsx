@@ -143,7 +143,7 @@ export function LightboxGallery() {
     <LayoutGroup id="premium-lightbox-gallery">
       <section
         aria-labelledby="home-gallery-title"
-        className="relative isolate w-full overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-24"
+        className="relative isolate w-full overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-10 lg:py-24"
         id="home-gallery"
       >
         <div
@@ -171,7 +171,7 @@ export function LightboxGallery() {
           <motion.header className="text-left mb-12" variants={revealItem}>
             <p className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent leading-[1.2]">Gallery</p>
             <h2
-              className="mt-4 font-display text-4xl text-text-inverse md:text-5xl font-extrabold leading-[1.1]"
+              className="mt-4 font-display text-2xl sm:text-3xl text-text-inverse md:text-5xl font-extrabold leading-[1.1]"
               id="home-gallery-title"
             >
               Inside the StimulAI Build.

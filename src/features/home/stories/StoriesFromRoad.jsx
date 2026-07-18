@@ -30,10 +30,19 @@ const revealItem = {
 };
 
 export function StoriesSection({ reviews = roadStories }) {
+  const getGridColsClass = (count) => {
+    if (count === 1) return 'lg:grid-cols-1';
+    if (count === 2) return 'lg:grid-cols-2';
+    if (count === 3) return 'lg:grid-cols-3';
+    return 'lg:grid-cols-4';
+  };
+
+  const gridColsClass = getGridColsClass(reviews.length);
+
   return (
     <section
       aria-labelledby="stories-from-road-title"
-      className="relative isolate py-section-lg bg-surface-inverse text-text-inverse overflow-hidden"
+      className="relative isolate py-10 lg:py-section-lg bg-surface-inverse text-text-inverse overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -60,7 +69,7 @@ export function StoriesSection({ reviews = roadStories }) {
           <motion.header className="max-w-[48rem]" variants={revealItem}>
             <p className="text-xs font-medium uppercase tracking-[0.35em] text-accent leading-[1.2]">RCX Community</p>
             <h2
-              className="mt-4 font-display text-heading-xl text-text-inverse md:text-display-m font-extrabold leading-[1.1]"
+               className="mt-4 font-display text-heading-xl text-text-inverse md:text-display-m font-extrabold leading-[1.1]"
               id="stories-from-road-title"
             >
               Stories from the Road
@@ -74,7 +83,7 @@ export function StoriesSection({ reviews = roadStories }) {
         </div>
 
         <motion.div
-          className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-24 w-full pb-4"
+          className={`mt-6 grid grid-cols-1 sm:grid-cols-2 ${gridColsClass} gap-space-24 w-full pb-4`}
           variants={revealContainer}
         >
           {reviews.map((review) => (

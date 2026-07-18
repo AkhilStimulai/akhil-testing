@@ -122,6 +122,11 @@ export const ReviewCard = memo(
           <h3 className="font-heading text-heading-s text-text-inverse transition-colors duration-medium ease-luxury group-hover:text-accent mb-space-12">
             {review.name}
           </h3>
+          {review.tagline && (
+            <p className="font-heading text-body-small text-accent font-semibold tracking-wider mb-space-12 italic">
+              "{review.tagline}"
+            </p>
+          )}
           <p className="font-body text-body-m text-text-inverse/76 leading-relaxed">
             {isLongText ? (isExpanded ? reviewText : `${truncatedText}...`) : reviewText}
             {isLongText && (

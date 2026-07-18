@@ -63,9 +63,9 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-sticky h-navbar border-b text-text-inverse transition-surface duration-medium ease-luxury',
+          'fixed inset-x-0 top-0 z-sticky h-navbar border-b-0 md:border-b text-text-inverse transition-surface duration-medium ease-luxury',
           isScrolled
-            ? 'border-text-inverse/10 bg-surface-inverse/90 shadow-hairline backdrop-blur-[var(--motion-blur-soft)]'
+            ? 'border-transparent md:border-text-inverse/10 bg-surface-inverse/90 shadow-none md:shadow-hairline backdrop-blur-[var(--motion-blur-soft)]'
             : 'border-transparent bg-surface-inverse/40',
         )}
       >

@@ -31,7 +31,7 @@ const itemVariants = {
 
 export function DomainsSection() {
   return (
-    <section className="relative min-h-screen lg:h-screen overflow-hidden bg-surface-inverse text-text-inverse pb-12 lg:pb-0">
+    <section className="relative lg:min-h-screen lg:h-screen overflow-hidden bg-surface-inverse text-text-inverse pb-8 lg:pb-0">
 
       {/* Background Glow */}
 
@@ -40,7 +40,7 @@ export function DomainsSection() {
         className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(183,24,43,.18),transparent_28%),radial-gradient(circle_at_90%_70%,rgba(255,255,255,.04),transparent_35%)]"
       />
 
-      <div className="relative mx-auto flex min-h-full max-w-container flex-col justify-center px-6 py-10 pt-[calc(var(--layout-navbar-height)+2rem)] lg:px-12">
+      <div className="relative mx-auto flex min-h-full max-w-container flex-col justify-center px-6 py-10 lg:pt-[calc(var(--layout-navbar-height)+2rem)] lg:px-12">
 
         {/* Header */}
 
@@ -63,7 +63,7 @@ export function DomainsSection() {
 
             <motion.h2
               variants={itemVariants}
-              className="mt-4 text-4xl font-light leading-[0.95] tracking-tight text-white lg:text-6xl"
+              className="mt-4 text-2xl sm:text-3xl font-light leading-[0.95] tracking-tight text-white lg:text-6xl"
             >
               Engineering for Today.
               <br />

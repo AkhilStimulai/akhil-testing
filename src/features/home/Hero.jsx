@@ -50,7 +50,7 @@ const revealItem = {
 };
 
 const ctaClass =
-  'group inline-flex h-control-lg items-center justify-center gap-space-12 rounded-full border px-space-24 font-body text-button transition-ui duration-medium ease-luxury focus-visible:outline-none focus-visible:shadow-focus motion-reduce:transition-none';
+  'group inline-flex h-7 lg:h-control-lg items-center justify-center gap-1 lg:gap-space-12 rounded-full border px-2.5 lg:px-space-24 font-body text-[10px] lg:text-button transition-ui duration-medium ease-luxury focus-visible:outline-none focus-visible:shadow-focus motion-reduce:transition-none';
 
 export function Hero() {
   const rootRef = useRef(null);
@@ -118,13 +118,13 @@ export function Hero() {
     <section
       ref={rootRef}
       aria-labelledby="home-hero-title"
-      className="relative isolate flex h-screen overflow-hidden bg-surface-inverse text-text-inverse"
+      className="relative isolate flex w-full aspect-[16/10] sm:aspect-[16/9] overflow-hidden bg-surface-inverse text-text-inverse lg:h-screen lg:aspect-none lg:flex lg:items-center lg:justify-center"
       onPointerLeave={handlePointerLeave}
       onPointerMove={handlePointerMove}
     >
       <motion.div
         aria-hidden="true"
-        className="absolute inset-0 -z-base"
+        className="absolute inset-0 -z-base w-full h-full"
         style={{ x: springX, y: springY }}
       >
         <motion.img
@@ -134,7 +134,7 @@ export function Hero() {
           alt=""
           decoding="async"
           fetchPriority="high"
-          className="size-full object-cover object-center opacity-90"
+          className="size-full object-cover object-right lg:object-center opacity-90"
           initial={{
             opacity: 0,
             scale: 1.08,
@@ -152,15 +152,15 @@ export function Hero() {
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-base bg-[linear-gradient(90deg,rgb(0_0_0/0.84)_0%,rgb(0_0_0/0.62)_34%,rgb(0_0_0/0.26)_66%,rgb(0_0_0/0.7)_100%)]"
+        className="absolute inset-0 -z-base bg-black/50 lg:bg-[linear-gradient(90deg,rgb(0_0_0/0.84)_0%,rgb(0_0_0/0.62)_34%,rgb(0_0_0/0.26)_66%,rgb(0_0_0/0.7)_100%)]"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-base bg-[radial-gradient(circle_at_28%_48%,rgb(255_255_255/0.1),transparent_32%),radial-gradient(circle_at_center,transparent_38%,rgb(0_0_0/0.72)_100%)]"
+        className="absolute inset-0 -z-base bg-[radial-gradient(circle_at_28%_48%,rgb(255_255_255/0.1),transparent_32%),radial-gradient(circle_at_center,transparent_38%,rgb(0_0_0/0.72)_100%)] hidden lg:block"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-base opacity-[0.12] mix-blend-overlay"
+        className="absolute inset-0 -z-base opacity-[0.12] mix-blend-overlay hidden lg:block"
         style={{
           backgroundImage:
             'linear-gradient(0deg, rgb(255 255 255 / 0.18) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.12) 1px, transparent 1px)',
@@ -168,9 +168,9 @@ export function Hero() {
         }}
       />
 
-      <div className="mx-auto flex h-full w-full max-w-container items-center px-6 pb-20 pt-navbar lg:px-12">
+      <div className="absolute inset-0 flex flex-col items-start justify-end px-6 pb-6 pt-[calc(var(--layout-navbar-height)+1.5rem)] lg:relative lg:inset-auto lg:mx-auto lg:flex lg:h-full lg:w-full lg:max-w-container lg:flex-col lg:items-start lg:justify-center lg:pb-20 lg:pt-navbar lg:px-12">
         <motion.div
-          className="mx-auto max-w-prose text-center lg:mx-0 lg:max-w-[54rem] lg:text-left"
+          className="w-full mx-auto max-w-prose text-left lg:mx-0 lg:max-w-[54rem] lg:text-left"
           initial="hidden"
           animate="visible"
           variants={revealContainer}
@@ -183,10 +183,10 @@ export function Hero() {
 
           <h1
             id="home-hero-title"
-            className="mt-6 font-display text-3xl sm:text-5xl md:text-6xl xl:text-7xl leading-[1.1] text-text-inverse font-extrabold"
+            className="mt-2 font-display text-base sm:text-4xl md:text-6xl xl:text-7xl leading-[1.1] text-text-inverse font-extrabold text-left lg:text-left"
           >
             {headingLines.map((line) => (
-              <span className="" key={line}>
+              <span className="block overflow-hidden pb-1.5" key={line}>
                 <motion.span className="block" variants={revealItem}>
                   {line}
                 </motion.span>
@@ -195,14 +195,14 @@ export function Hero() {
           </h1>
 
           <motion.p
-            className="mx-auto mt-6 max-w-prose font-body text-base font-normal leading-[1.6] text-text-inverse/74 lg:mx-0"
+            className="mx-auto mt-2 max-w-prose font-body text-xs sm:text-base font-normal leading-[1.6] text-text-inverse/74 text-left lg:mx-0 lg:text-left hidden sm:block"
             variants={revealItem}
           >
-            Engineered for today. Designed for tomorrow. Built to inspire every journey.
+            Designed for future. Built to inspire every journey.
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start"
+            className="mt-4 flex flex-row items-center justify-start lg:justify-start gap-2.5"
             variants={revealItem}
           >
             <Link
@@ -215,7 +215,7 @@ export function Hero() {
               Explore Our Work
               <ArrowRight
                 aria-hidden="true"
-                className="size-icon-16 transition-transform duration-medium ease-luxury group-hover:translate-x-1"
+                className="size-3 lg:size-icon-16 transition-transform duration-medium ease-luxury group-hover:translate-x-1"
               />
             </Link>
             <Link

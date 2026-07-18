@@ -38,12 +38,13 @@ export function HomePage() {
 
   return (
     <RouteDocument meta={HOME_META}>
-      <Hero />
-    
-      <DomainsSection />
-      <FeaturedInnovation />
-      <LightboxGallery />
-      <StoriesFromRoad />
+      <div className="bg-surface-inverse">
+        <Hero />
+        <DomainsSection />
+        <FeaturedInnovation />
+        <LightboxGallery />
+        <StoriesFromRoad />
+      </div>
     </RouteDocument>
   );
 }
