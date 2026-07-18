@@ -40,7 +40,7 @@ export function DomainsSection() {
         className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(183,24,43,.18),transparent_28%),radial-gradient(circle_at_90%_70%,rgba(255,255,255,.04),transparent_35%)]"
       />
 
-      <div className="relative mx-auto flex min-h-full max-w-container flex-col justify-center px-6 py-10 lg:pt-[calc(var(--layout-navbar-height)+2rem)] lg:px-12">
+      <div className="relative mx-auto flex min-h-full max-w-container flex-col justify-center px-6 py-10 lg:px-12">
 
         {/* Header */}
 
