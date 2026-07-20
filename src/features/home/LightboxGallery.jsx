@@ -143,7 +143,7 @@ export function LightboxGallery() {
     <LayoutGroup id="premium-lightbox-gallery">
       <section
         aria-labelledby="home-gallery-title"
-        className="relative isolate w-full overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-10 lg:py-24"
+        className="relative isolate w-full overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-section-sm lg:py-section-lg"
         id="home-gallery"
       >
         <div
@@ -161,22 +161,22 @@ export function LightboxGallery() {
         />
 
         <motion.div
-          className="mx-auto w-full max-w-container px-6 lg:px-12"
+          className="mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg"
           initial="hidden"
           variants={revealContainer}
           viewport={{ once: true, amount: 0.18 }}
           whileInView="visible"
         >
           {/* Header */}
-          <motion.header className="text-left mb-12" variants={revealItem}>
-            <p className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent leading-[1.2]">Gallery</p>
+          <motion.header className="text-left mb-space-48" variants={revealItem}>
+            <p className="font-body text-label font-medium uppercase tracking-[0.35em] text-accent">Gallery</p>
             <h2
-              className="mt-4 font-display text-2xl sm:text-3xl text-text-inverse md:text-5xl font-extrabold leading-[1.1]"
+              className="mt-space-16 font-display text-heading-xl md:text-display-m text-text-inverse"
               id="home-gallery-title"
             >
               Inside the StimulAI Build.
             </h2>
-            <p className="mt-4 max-l font-body text-left text-base font-normal leading-[1.6] text-text-inverse/68">
+            <p className="mt-space-16 max-w-prose font-body text-body-l font-normal text-text-inverse/68">
               Explore our detailed engineering builds, precision prototypes, and product designs captured during development.
             </p>
           </motion.header>

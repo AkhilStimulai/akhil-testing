@@ -22,7 +22,7 @@ export function Footer() {
         }}
       />
 
-      <div className="mx-auto max-w-container px-container-sm py-section-sm md:px-container-md lg:px-container-lg">
+      <div className="mx-auto max-w-container px-container-sm md:px-container-md lg:px-container-lg py-section-sm">
 
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
 
@@ -79,9 +79,9 @@ export function Footer() {
 
         </div>
 
-        <div className="my-10 h-px bg-text-inverse/10" />
+        <div className="my-space-40 h-px bg-text-inverse/10" />
 
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between text-text-inverse/50">
+        <div className="flex flex-col gap-space-16 lg:flex-row lg:items-center lg:justify-between text-text-inverse/50 font-body text-body-small">
 
           <p>
             © {new Date().getFullYear()} STIMULAI. All rights reserved.

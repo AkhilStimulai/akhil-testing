@@ -160,9 +160,9 @@ export function ContactCard() {
       {/* Header */}
       <div className="flex items-start justify-between gap-6">
         <div>
-          <p className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent leading-[1.2]">Contact</p>
+          <p className="font-body text-label font-medium uppercase tracking-[0.35em] text-accent">Contact</p>
 
-          <p className="mt-2 font-heading text-xl font-bold text-text-inverse leading-[1.2]">
+          <p className="mt-space-8 font-heading text-heading-s font-bold text-text-inverse">
             {SITE_CONFIG.name}
           </p>
         </div>
@@ -183,11 +183,11 @@ export function ContactCard() {
             <Icon className="mt-1 size-icon-20 text-accent transition-transform duration-medium group-hover:scale-110" />
 
             <span>
-              <span className="block font-body text-xs font-medium text-text-inverse/44 leading-[1.2] uppercase tracking-wider">
+              <span className="block font-body text-caption font-medium text-text-inverse/44 uppercase tracking-wider">
                 {label}
               </span>
 
-              <span className="mt-1 block font-body text-sm font-normal text-text-inverse/72 transition-colors duration-medium group-hover:text-text-inverse leading-[1.6]">
+              <span className="mt-space-4 block font-body text-body-small font-normal text-text-inverse/72 transition-colors duration-medium group-hover:text-text-inverse">
                 {value}
               </span>
             </span>
@@ -230,11 +230,11 @@ export function ContactMap() {
           <MapPin className="size-icon-28 text-accent" />
         </div>
 
-        <h3 className="mt-6 font-heading text-xl font-bold text-text-inverse leading-[1.2]">
+        <h3 className="mt-space-24 font-heading text-heading-s font-bold text-text-inverse">
           Visit Our Office
         </h3>
 
-        <p className="mt-4 max-w-xs font-body text-sm font-normal text-text-inverse/72 leading-[1.6]">
+        <p className="mt-space-16 max-w-xs font-body text-body-small font-normal text-text-inverse/72">
           Arcadia, South City II
           <br />
           Sector 49
@@ -242,7 +242,7 @@ export function ContactMap() {
           Gurugram, Haryana
         </p>
 
-        <span className="mt-8 inline-flex rounded-full border border-accent px-5 py-2 font-body text-xs font-medium text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-white leading-[1.2] uppercase tracking-wider">
+        <span className="mt-space-32 inline-flex rounded-full border border-accent px-space-24 py-space-8 font-body text-caption font-medium text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-white uppercase tracking-wider">
           Open in Google Maps →
         </span>
 
@@ -310,7 +310,7 @@ export function ContactSection() {
   return (
     <section
       aria-labelledby="home-contact-title"
-      className="relative isolate min-h-screen overflow-x-hidden bg-surface-inverse px-6 pt-[calc(var(--layout-navbar-height)+2rem)] pb-12 text-text-inverse lg:px-12 md:flex md:items-center md:pt-navbar"
+      className="relative isolate min-h-screen overflow-x-hidden bg-surface-inverse px-container-sm pt-[calc(var(--layout-navbar-height)+2rem)] pb-space-48 text-text-inverse md:px-container-md lg:px-container-lg md:flex md:items-center md:pt-navbar"
     >
       {/* Background */}
       <div
@@ -337,31 +337,26 @@ export function ContactSection() {
       >
         {/* Heading */}
         <motion.div variants={revealItem}>
-          <p className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent leading-[1.2]">
+          <p className="font-body text-label font-medium uppercase tracking-[0.35em] text-accent">
             Connect
           </p>
 
           <h2
             id="home-contact-title"
             className="
-              mt-3
+              mt-space-16
               max-w-5xl
               font-display
-              text-white
-              text-3xl
-              sm:text-4xl
-              md:text-5xl
-              lg:text-6xl
-              xl:text-[72px]
-              font-extrabold
-              leading-[1.1]
-              tracking-tight
+              text-text-inverse
+              text-heading-xl
+              md:text-display-m
+              lg:text-display-l
             "
           >
             Let's Build The Future Together.
           </h2>
 
-          <p className="mt-4 max-w-2xl font-body text-base font-normal leading-[1.6] text-text-inverse/68">
+          <p className="mt-space-16 max-w-2xl font-body text-body-l font-normal text-text-inverse/68">
             Innovators, partners, customers and researchers are invited
             to connect with STIMULAI to shape intelligent engineering
             into real systems.
@@ -371,7 +366,7 @@ export function ContactSection() {
         {/* Contact + Map */}
         <motion.div
           variants={revealItem}
-          className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2"
+          className="mt-space-40 grid grid-cols-1 gap-space-24 lg:grid-cols-2"
         >
           <ContactCard />
           <ContactMap />

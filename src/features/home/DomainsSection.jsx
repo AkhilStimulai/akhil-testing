@@ -31,7 +31,7 @@ const itemVariants = {
 
 export function DomainsSection() {
   return (
-    <section className="relative lg:min-h-screen lg:h-screen overflow-hidden bg-surface-inverse text-text-inverse pb-8 lg:pb-0">
+    <section className="relative lg:min-h-screen lg:h-screen overflow-hidden bg-surface-inverse text-text-inverse py-section-sm lg:py-0">
 
       {/* Background Glow */}
 
@@ -40,7 +40,7 @@ export function DomainsSection() {
         className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(183,24,43,.18),transparent_28%),radial-gradient(circle_at_90%_70%,rgba(255,255,255,.04),transparent_35%)]"
       />
 
-      <div className="relative mx-auto flex min-h-full max-w-container flex-col justify-center px-6 py-10 lg:px-12">
+      <div className="relative mx-auto flex min-h-full max-w-container flex-col justify-center px-container-sm md:px-container-md lg:px-container-lg">
 
         {/* Header */}
 
@@ -49,26 +49,26 @@ export function DomainsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-4 grid gap-4 lg:grid-cols-2 lg:items-end"
+          className="mb-space-24 grid gap-space-24 lg:grid-cols-2 lg:items-end"
         >
 
           <div>
 
             <motion.p
               variants={itemVariants}
-              className="text-sm uppercase tracking-[0.35em] text-[#b7182b]"
+              className="font-body text-label font-medium uppercase tracking-[0.35em] text-accent"
             >
               Engineering Domains
             </motion.p>
 
             <motion.h2
               variants={itemVariants}
-              className="mt-4 text-2xl sm:text-3xl font-light leading-[0.95] tracking-tight text-white lg:text-6xl"
+              className="mt-space-16 font-display text-heading-xl md:text-display-m text-text-inverse"
             >
               Engineering for Today.
               <br />
               Solutions for
-              <span className="text-[#b7182b]">
+              <span className="text-accent">
                 {" "}
                 Tomorrow.
               </span>
@@ -88,7 +88,7 @@ export function DomainsSection() {
             once: true,
             amount: 0.2,
           }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 lg:mt-0 flex-1"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-space-16 mt-space-32 lg:mt-0 flex-1"
         >
           {domains.map((domain) => (
             <motion.div

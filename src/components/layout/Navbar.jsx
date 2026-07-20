@@ -69,7 +69,7 @@ export function Navbar() {
             : 'border-transparent bg-surface-inverse/40',
         )}
       >
-        <div className="mx-auto flex h-full w-full max-w-container items-center justify-between px-6 lg:px-12">
+        <div className="mx-auto flex h-full w-full max-w-container items-center justify-between px-container-sm md:px-container-md lg:px-container-lg">
           <Logo inverse />
 
           <div className="ml-auto flex items-center">

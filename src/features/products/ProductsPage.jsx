@@ -65,7 +65,7 @@ function SpecCard({ item, accentOnLabel }) {
     <motion.div className="flex flex-col" variants={gridItemVariants}>
       <span
         className={cn(
-          'text-xs font-bold uppercase tracking-[0.2em] mb-1',
+          'font-body text-caption font-bold uppercase tracking-[0.2em] mb-space-4',
           accentOnLabel ? 'text-accent' : 'text-text-inverse',
         )}
       >
@@ -73,20 +73,20 @@ function SpecCard({ item, accentOnLabel }) {
       </span>
       <span
         className={cn(
-          'font-heading text-lg font-semibold',
+          'font-heading text-heading-s font-semibold',
           accentOnLabel ? 'text-text-inverse' : 'text-accent',
         )}
       >
         {item.value}
       </span>
-      <span className="text-text-inverse/50 text-xs mt-1 font-body">{item.detail}</span>
+      <span className="text-text-inverse/50 font-body text-caption mt-space-4">{item.detail}</span>
     </motion.div>
   );
 }
 
 function VerticalSidebar() {
   return (
-    <div className="absolute right-0 top-0 h-full w-16 md:w-20 z-50 hidden lg:flex flex-col uppercase text-[10px] md:text-xs font-bold tracking-[0.6em] text-text-inverse/40 text-center border-l border-text-inverse/5 bg-black/40 backdrop-blur-md">
+    <div className="absolute right-0 top-0 h-full w-16 md:w-20 z-50 hidden lg:flex flex-col uppercase font-body text-caption font-bold tracking-[0.6em] text-text-inverse/40 text-center border-l border-text-inverse/5 bg-black/40 backdrop-blur-md">
       <div className="h-1/2 flex items-center justify-center transition-colors hover:bg-accent/10 cursor-pointer group border-b border-text-inverse/5">
         <span
           className="group-hover:text-accent transition-colors"
@@ -146,7 +146,7 @@ function SpecsDashboard() {
     <div className="w-full z-40 flex flex-col md:flex-row gap-6 bg-text-inverse/[0.02] border border-text-inverse/5 rounded-3xl p-6 backdrop-blur-md shadow-2xl relative">
       {/* Left Sidebar (Tabs) */}
       <div className="w-full md:w-1/4 flex flex-col gap-2 border-b md:border-b-0 md:border-r border-text-inverse/10 pb-4 md:pb-0 md:pr-4">
-        <p className="text-text-inverse/40 text-xs font-bold uppercase tracking-[0.2em] mb-2 pl-4 font-body">
+        <p className="text-text-inverse/40 font-body text-caption font-bold uppercase tracking-[0.2em] mb-space-8 pl-space-16">
           System Analysis
         </p>
 
@@ -154,7 +154,7 @@ function SpecsDashboard() {
           <button
             key={tab.id}
             className={cn(
-              'w-full text-left px-4 py-3 rounded-r-lg font-heading font-semibold text-sm tracking-wide transition-all flex items-center justify-between group',
+              'w-full text-left px-space-16 py-space-12 rounded-r-lg font-heading font-semibold text-body-small tracking-wide transition-all flex items-center justify-between group',
               activeTab === tab.id
                 ? 'text-accent border-l-[3px] border-accent bg-accent/10'
                 : 'text-text-inverse/50 border-l-[3px] border-transparent hover:text-text-inverse hover:bg-text-inverse/5',
@@ -239,9 +239,9 @@ export function ProductsPage() {
         <VerticalSidebar />
 
         {/* Main Content Wrapper */}
-        <div className="relative w-full min-h-screen lg:h-full max-w-container mx-auto flex flex-col justify-between pt-24 pb-10 px-6 lg:pl-12 lg:pr-32 2xl:pr-12 z-10 gap-12 lg:gap-6">
+        <div className="relative w-full min-h-screen lg:h-full max-w-container mx-auto flex flex-col justify-between pt-navbar pb-section-sm px-container-sm md:px-container-md lg:px-container-lg lg:pr-space-120 2xl:pr-container-lg z-10 gap-space-48 lg:gap-space-24">
           {/* Top Half: Hero & Image */}
-          <div className="flex flex-col lg:flex-row justify-between lg:items-center w-full relative flex-1 min-h-0 gap-8 lg:gap-0">
+          <div className="flex flex-col lg:flex-row justify-between lg:items-center w-full relative flex-1 min-h-0 gap-space-40 lg:gap-0">
             {/* Left Copy Section */}
             <motion.div
               className="flex flex-col z-20 max-w-md"
@@ -250,21 +250,21 @@ export function ProductsPage() {
               variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } }}
             >
               <motion.p
-                className="text-xs md:text-sm font-bold tracking-[0.5em] text-accent uppercase mb-4 font-body"
+                className="font-body text-label font-bold tracking-[0.5em] text-accent uppercase mb-space-16"
                 variants={fadeUp}
                 custom={0}
               >
                 The Next Evolution
               </motion.p>
               <motion.h2
-                className="text-5xl sm:text-7xl lg:text-8xl font-display font-black text-text-inverse tracking-tighter mb-4 leading-[0.85]"
+                className="font-display text-display-m md:text-display-l lg:text-display-xl text-text-inverse mb-space-16"
                 variants={fadeUp}
                 custom={1}
               >
                 FUTURE
               </motion.h2>
               <motion.p
-                className="text-text-inverse/50 text-sm md:text-base leading-relaxed mb-8 font-body max-w-xs"
+                className="text-text-inverse/50 font-body text-body-l mb-space-40 max-w-xs"
                 variants={fadeUp}
                 custom={2}
               >
@@ -272,7 +272,7 @@ export function ProductsPage() {
               </motion.p>
               <motion.div variants={fadeUp} custom={3}>
                 <Link
-                  className="group inline-flex items-center gap-3 bg-accent hover:bg-accent-hover text-text-inverse text-xs md:text-sm font-bold py-4 px-10 rounded-full w-max uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(183,24,43,0.4)] transition-all duration-300 transform hover:scale-105 font-body"
+                  className="group inline-flex items-center gap-space-12 bg-accent hover:bg-accent-hover text-text-inverse font-body text-button font-bold py-space-16 px-space-40 rounded-full w-max uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(183,24,43,0.4)] transition-all duration-300 transform hover:scale-105"
                   to={ROUTES.CONTACT}
                 >
                   Pre-Order Now

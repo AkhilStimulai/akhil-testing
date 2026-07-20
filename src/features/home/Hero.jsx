@@ -50,7 +50,7 @@ const revealItem = {
 };
 
 const ctaClass =
-  'group inline-flex h-7 lg:h-control-lg items-center justify-center gap-1 lg:gap-space-12 rounded-full border px-2.5 lg:px-space-24 font-body text-[10px] lg:text-button transition-ui duration-medium ease-luxury focus-visible:outline-none focus-visible:shadow-focus motion-reduce:transition-none';
+  'group inline-flex h-control-lg items-center justify-center gap-space-12 rounded-full border px-space-24 font-body text-button transition-ui duration-medium ease-luxury focus-visible:outline-none focus-visible:shadow-focus motion-reduce:transition-none';
 
 export function Hero() {
   const rootRef = useRef(null);
@@ -168,25 +168,25 @@ export function Hero() {
         }}
       />
 
-      <div className="absolute inset-0 flex flex-col items-start justify-end px-6 pb-6 pt-[calc(var(--layout-navbar-height)+1.5rem)] lg:relative lg:inset-auto lg:mx-auto lg:flex lg:h-full lg:w-full lg:max-w-container lg:flex-col lg:items-start lg:justify-center lg:pb-20 lg:pt-navbar lg:px-12">
+      <div className="absolute inset-0 flex flex-col items-start justify-end px-container-sm pb-space-24 pt-[calc(var(--layout-navbar-height)+1.5rem)] md:px-container-md lg:relative lg:inset-auto lg:mx-auto lg:flex lg:h-full lg:w-full lg:max-w-container lg:flex-col lg:items-start lg:justify-center lg:pb-space-40 lg:pt-navbar lg:px-container-lg">
         <motion.div
-          className="w-full mx-auto max-w-prose text-left lg:mx-0 lg:max-w-[54rem] lg:text-left"
+          className="w-full max-w-[54rem] text-left"
           initial="hidden"
           animate="visible"
           variants={revealContainer}
         >
           <motion.p
-            className="text-xs font-medium uppercase tracking-[0.35em] text-text-inverse/76 leading-[1.2]"
+            className="font-body text-label font-medium uppercase tracking-[0.35em] text-text-inverse/76"
             variants={revealItem}
           >
           </motion.p>
 
           <h1
             id="home-hero-title"
-            className="mt-2 font-display text-base sm:text-4xl md:text-6xl xl:text-7xl leading-[1.1] text-text-inverse font-extrabold text-left lg:text-left"
+            className="mt-space-12 font-display text-display-m md:text-display-l lg:text-display-xl text-text-inverse"
           >
             {headingLines.map((line) => (
-              <span className="block overflow-hidden pb-1.5" key={line}>
+              <span className="block overflow-hidden pb-0.5" key={line}>
                 <motion.span className="block" variants={revealItem}>
                   {line}
                 </motion.span>
@@ -195,14 +195,14 @@ export function Hero() {
           </h1>
 
           <motion.p
-            className="mx-auto mt-2 max-w-prose font-body text-xs sm:text-base font-normal leading-[1.6] text-text-inverse/74 text-left lg:mx-0 lg:text-left hidden sm:block"
+            className="mt-space-16 max-w-prose font-body text-body-l font-normal text-text-inverse/74 hidden sm:block"
             variants={revealItem}
           >
             Designed for future. Built to inspire every journey.
           </motion.p>
 
           <motion.div
-            className="mt-4 flex flex-row items-center justify-start lg:justify-start gap-2.5"
+            className="mt-space-24 flex flex-row items-center justify-start gap-space-12"
             variants={revealItem}
           >
             <Link
@@ -215,7 +215,7 @@ export function Hero() {
               Explore Our Work
               <ArrowRight
                 aria-hidden="true"
-                className="size-3 lg:size-icon-16 transition-transform duration-medium ease-luxury group-hover:translate-x-1"
+                className="size-icon-16 transition-transform duration-medium ease-luxury group-hover:translate-x-1"
               />
             </Link>
             <Link

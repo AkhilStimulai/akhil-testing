@@ -32,12 +32,12 @@ export default function DomainCard({ domain }) {
       </div>
 
       {/* Content */}
-      <div className="relative flex h-full flex-col justify-between p-6">
+      <div className="relative flex h-full flex-col justify-between p-space-24">
 
         {/* Number */}
         <div className="flex items-center gap-4">
 
-          <span className="text-5xl font-extrabold leading-none text-[#b7182b]">
+          <span className="font-display text-heading-l font-extrabold leading-none text-accent">
             {domain.number}
           </span>
 
@@ -45,7 +45,7 @@ export default function DomainCard({ domain }) {
 
           <Icon
             size={20}
-            className="text-[#b7182b]"
+            className="text-accent"
           />
 
         </div>
@@ -53,17 +53,17 @@ export default function DomainCard({ domain }) {
         {/* Bottom */}
         <div className="max-w-[280px]">
 
-          <h3 className="text-xl font-bold leading-[1.2] tracking-tight text-white lg:text-2xl">
+          <h3 className="font-heading text-heading-s text-text-inverse">
             {domain.title}
           </h3>
 
-          <p className="mt-2 text-xs font-normal leading-[1.6] text-white/65 lg:text-sm">
+          <p className="mt-space-8 font-body text-body-small font-normal text-text-inverse/65">
             {domain.subtitle}
           </p>
 
           <Link
             to={domain.href}
-            className="mt-4 inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-white transition duration-300 hover:text-[#b7182b] leading-[1.2]"
+            className="mt-space-16 inline-flex items-center gap-space-12 font-body text-caption font-medium uppercase tracking-[0.22em] text-text-inverse transition duration-300 hover:text-accent"
           >
             Explore Domain
 
@@ -78,7 +78,7 @@ export default function DomainCard({ domain }) {
       </div>
 
       {/* Border */}
-      <div className="absolute inset-0 rounded-[22px] ring-1 ring-inset ring-white/5 transition duration-500 group-hover:ring-[#b7182b]/40" />
+      <div className="absolute inset-0 rounded-[22px] ring-1 ring-inset ring-white/5 transition duration-500 group-hover:ring-accent/40" />
     </motion.article>
   );
 }
