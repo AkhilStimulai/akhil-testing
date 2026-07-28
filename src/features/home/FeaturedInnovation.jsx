@@ -52,7 +52,7 @@ export function CTAGroup() {
       <Link
         className={cn(
           ctaClass,
-          'border-text-inverse bg-text-inverse text-text-primary hover:bg-transparent hover:text-text-inverse',
+          'border-accent bg-accent text-text-inverse hover:bg-accent-hover shadow-[0_0_20px_rgba(183,24,43,0.4)]',
         )}
         to={ROUTES.PRODUCTS}
       >
@@ -62,15 +62,6 @@ export function CTAGroup() {
           className="size-icon-16 transition-transform duration-medium ease-luxury group-hover:translate-x-space-4"
         />
       </Link>
-      <a
-        className={cn(
-          ctaClass,
-          'border-text-inverse/24 bg-text-inverse/5 text-text-inverse hover:border-accent hover:text-accent',
-        )}
-        href="#rcx-engineering-story"
-      >
-        Engineering Story
-      </a>
     </motion.div>
   );
 }
@@ -232,17 +223,11 @@ export function FeaturedInnovation() {
           <div className="mt-2.5 flex flex-row items-center gap-2">
             <Link
               to={ROUTES.PRODUCTS}
-              className="inline-flex h-7 items-center justify-center gap-1.5 rounded-full border border-text-inverse bg-text-inverse px-3 font-body text-[9px] font-medium text-text-primary hover:bg-transparent hover:text-text-inverse transition-colors active:scale-95"
+              className="inline-flex h-7 items-center justify-center gap-1.5 rounded-full border border-accent bg-accent px-3 font-body text-[9px] font-medium text-text-inverse hover:bg-accent-hover shadow-[0_0_16px_rgba(183,24,43,0.4)] transition-colors active:scale-95"
             >
               Explore RCX
               <ArrowRight className="size-2.5" />
             </Link>
-            <a
-              href="#rcx-engineering-story"
-              className="inline-flex h-7 items-center justify-center rounded-full border border-text-inverse/24 bg-text-inverse/5 px-3 font-body text-[9px] font-medium text-text-inverse hover:border-accent hover:text-accent transition-colors active:scale-95"
-            >
-              Engineering Story
-            </a>
           </div>
         </div>
 

@@ -7,6 +7,12 @@ import { Logo } from './Logo.jsx';
 
 function getIsMenuItemActive(item, isActive, location, activePath) {
   if (location.pathname === '/' && activePath) {
+    if (item.hash) {
+      return activePath === (item.to + item.hash);
+    }
+    if (item.to === '/') {
+      return activePath === '/';
+    }
     return activePath === item.to;
   }
 
@@ -55,7 +61,7 @@ export function MobileMenu({ isOpen, items, onClose, activePath }) {
   const scrollSpySections = [
     { id: 'home-hero', path: '/' },
     { id: 'home-domains', path: '/domains' },
-    { id: 'home-rcx', path: '/rcx' },
+    { id: 'home-rcx', path: '/#home-rcx' },
     { id: 'home-gallery', path: '/gallery' },
     { id: 'home-reviews', path: '/reviews' },
     { id: 'home-contact', path: '/contact' },
@@ -103,7 +109,7 @@ export function MobileMenu({ isOpen, items, onClose, activePath }) {
             <nav aria-label="Mobile navigation" className="mt-space-64">
               <ul className="grid gap-space-4">
                 {items.map((item) => (
-                  <li key={item.to}>
+                  <li key={item.hash || item.to}>
                     <NavLink
                       className={({ isActive }) =>
                         cn(
@@ -113,14 +119,19 @@ export function MobileMenu({ isOpen, items, onClose, activePath }) {
                       }
                       end={item.to === '/'}
                       onClick={(e) => {
-                        if (item.to === '/' && location.pathname === '/') {
+                        if (item.hash) {
+                          e.preventDefault();
+                          const sectionId = item.hash.replace('#', '');
+                          window.history.pushState(null, '', '/' + item.hash);
+                          window.dispatchEvent(new CustomEvent('sectionNavigate', { detail: sectionId }));
+                        } else if (item.to === '/' && location.pathname === '/') {
                           e.preventDefault();
                           window.history.pushState(null, '', '/');
                           window.dispatchEvent(new CustomEvent('sectionNavigate', { detail: 'home-hero' }));
                         }
                         onClose();
                       }}
-                      to={item.to}
+                      to={item.to + (item.hash || '')}
                     >
                       {item.label}
                     </NavLink>
