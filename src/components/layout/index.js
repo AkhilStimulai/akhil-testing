@@ -8,4 +8,5 @@ export { Navbar } from './Navbar.jsx';
 export { PageTransition } from './PageTransition.jsx';
 export { ScrollProgress } from './ScrollProgress.jsx';
 export { ScrollRestoration } from './ScrollRestoration.jsx';
+export { FullPageScroll } from './FullPageScroll.jsx';
 export { SkipLink } from './SkipLink.jsx';

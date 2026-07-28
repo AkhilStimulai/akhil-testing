@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @layer base {
   :root {
     color-scheme: light;
@@ -46,10 +57,10 @@
     --color-selection: 248 232 235;
     --color-selection-text: 17 17 17;
 
-    --font-display: 'Michroma', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-    --font-heading: 'Space Grotesk', Inter, ui-sans-serif, system-ui, sans-serif;
-    --font-body: Inter, ui-sans-serif, system-ui, sans-serif;
-    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    --font-display: 'Michroma', sans-serif;
+    --font-heading: 'Michroma', sans-serif;
+    --font-body: 'Michroma', sans-serif;
+    --font-mono: 'Michroma', sans-serif;
 
     --font-weight-regular: 400;
     --font-weight-medium: 500;
@@ -98,7 +109,7 @@
     --type-label-line-height: 1.35;
     --type-button-size: 0.8125rem;
     --type-button-line-height: 1;
-    --type-navigation-size: 0.8125rem;
+    --type-navigation-size: 0.85rem;
     --type-navigation-line-height: 1.2;
 
     --space-4: 0.25rem;
@@ -184,6 +195,10 @@
     overflow-x: hidden;
   }
 
+  html.snap-active {
+    scroll-snap-type: y mandatory;
+  }
+
   body {
     min-height: 100%;
     margin: 0;
@@ -196,6 +211,20 @@
 
   #root {
     min-height: 100vh;
+  }
+
+  .h-screen-dvh {
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .min-h-screen-dvh {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    min-height: 100dvh;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
   * {
@@ -261,6 +290,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {

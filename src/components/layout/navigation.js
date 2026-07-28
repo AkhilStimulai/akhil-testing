@@ -5,6 +5,7 @@ export const PRIMARY_NAV_ITEMS = Object.freeze([
   { label: 'Domains', to: ROUTES.DOMAINS },
   { label: 'RCX', to: ROUTES.PRODUCTS },
   { label: 'Gallery', to: ROUTES.GALLERY },
+  { label: 'Reviews', to: ROUTES.REVIEWS },
   { label: 'Contact', to: ROUTES.CONTACT },
 ]);
 

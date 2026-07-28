@@ -5,7 +5,11 @@ import { X } from 'lucide-react';
 import { cn } from '@/utils';
 import { Logo } from './Logo.jsx';
 
-function getIsMenuItemActive(item, isActive, location) {
+function getIsMenuItemActive(item, isActive, location, activePath) {
+  if (location.pathname === '/' && activePath) {
+    return activePath === item.to;
+  }
+
   if (item.hash) {
     return location.pathname === '/' && location.hash === item.hash;
   }
@@ -17,7 +21,7 @@ function getIsMenuItemActive(item, isActive, location) {
   return isActive;
 }
 
-export function MobileMenu({ isOpen, items, onClose }) {
+export function MobileMenu({ isOpen, items, onClose, activePath }) {
   const closeButtonRef = useRef(null);
   const location = useLocation();
 
@@ -47,6 +51,15 @@ export function MobileMenu({ isOpen, items, onClose }) {
   useEffect(() => {
     onClose();
   }, [location.hash, location.pathname, onClose]);
+
+  const scrollSpySections = [
+    { id: 'home-hero', path: '/' },
+    { id: 'home-domains', path: '/domains' },
+    { id: 'home-rcx', path: '/rcx' },
+    { id: 'home-gallery', path: '/gallery' },
+    { id: 'home-reviews', path: '/reviews' },
+    { id: 'home-contact', path: '/contact' },
+  ];
 
   return (
     <AnimatePresence>
@@ -95,10 +108,18 @@ export function MobileMenu({ isOpen, items, onClose }) {
                       className={({ isActive }) =>
                         cn(
                           'block border-b border-text-inverse/10 py-space-16 font-heading text-heading-s text-text-inverse transition-ui duration-medium ease-luxury hover:text-accent focus-visible:outline-none focus-visible:shadow-focus',
-                          getIsMenuItemActive(item, isActive, location) && 'text-accent',
+                          getIsMenuItemActive(item, isActive, location, activePath) && 'text-accent',
                         )
                       }
                       end={item.to === '/'}
+                      onClick={(e) => {
+                        if (item.to === '/' && location.pathname === '/') {
+                          e.preventDefault();
+                          window.history.pushState(null, '', '/');
+                          window.dispatchEvent(new CustomEvent('sectionNavigate', { detail: 'home-hero' }));
+                        }
+                        onClose();
+                      }}
                       to={item.to}
                     >
                       {item.label}

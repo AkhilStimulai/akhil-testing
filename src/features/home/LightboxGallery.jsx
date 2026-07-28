@@ -143,8 +143,8 @@ export function LightboxGallery() {
     <LayoutGroup id="premium-lightbox-gallery">
       <section
         aria-labelledby="home-gallery-title"
-        className="relative isolate w-full overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-section-sm lg:py-section-lg"
-        id="home-gallery"
+        className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-0"
+        data-section-id="home-gallery"
       >
         <div
           aria-hidden="true"
@@ -160,34 +160,70 @@ export function LightboxGallery() {
           }}
         />
 
+        {/* MOBILE VIEW (Frame 4) — 100dvh strictly fitting without overflow */}
+        <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-4 overflow-hidden relative z-10 text-left">
+          {/* Header */}
+          <div className="shrink-0 mb-1">
+            <p className="font-body text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+              Gallery
+            </p>
+            <h2 className="mt-0.5 font-display text-[clamp(1.1rem,4.5vw,1.38rem)] font-bold text-text-inverse leading-tight">
+              Inside the StimulAI Build.
+            </h2>
+            <p className="font-body text-[clamp(0.66rem,2.7vw,0.76rem)] text-text-inverse/75 leading-snug mt-0.5 max-w-prose">
+              Explore our detailed engineering builds, precision prototypes, and product designs captured during development.
+            </p>
+          </div>
+
+          {/* Condensed 2-Column Grid filling remaining viewport height */}
+          <div className="flex-1 min-h-0 grid grid-cols-2 grid-rows-5 gap-1 mt-1">
+            {images.slice(0, 10).map((img, idx) => (
+              <div
+                key={img.id || idx}
+                onClick={() => openLightbox(idx)}
+                className="relative rounded bg-[#1C1C1C] border border-white/10 overflow-hidden flex items-center justify-center group cursor-pointer"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="absolute inset-0 size-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                <span className="sr-only">{img.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW */}
         <motion.div
-          className="mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg"
+          className="hidden md:block mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg pt-navbar lg:pt-[calc(var(--layout-navbar-height)+2rem)]"
           initial="hidden"
           variants={revealContainer}
           viewport={{ once: true, amount: 0.18 }}
           whileInView="visible"
         >
           {/* Header */}
-          <motion.header className="text-left mb-space-48" variants={revealItem}>
-            <p className="font-body text-label font-medium uppercase tracking-[0.35em] text-accent">Gallery</p>
+          <motion.header className="text-left mb-space-12 lg:mb-space-32" variants={revealItem}>
+            <p className="font-body text-[10px] sm:text-label font-medium uppercase tracking-[0.25em] sm:tracking-[0.35em] text-accent">Gallery</p>
             <h2
-              className="mt-space-16 font-display text-heading-xl md:text-display-m text-text-inverse"
+              className="mt-1 sm:mt-space-12 font-display text-heading-s sm:text-heading-xl md:text-display-m text-text-inverse"
               id="home-gallery-title"
             >
               Inside the StimulAI Build.
             </h2>
-            <p className="mt-space-16 max-w-prose font-body text-body-l font-normal text-text-inverse/68">
+            <p className="mt-1 sm:mt-space-12 max-w-prose font-body text-body-xs sm:text-body-m md:text-body-l font-normal text-text-inverse/68 line-clamp-2 sm:line-clamp-none">
               Explore our detailed engineering builds, precision prototypes, and product designs captured during development.
             </p>
           </motion.header>
 
           {/* Grid wrapper — serves as the positioning context for the lightbox */}
           <div className="relative w-full">
-            {/* 4x3 Grid */}
+            {/* Grid */}
             <motion.div
               aria-label="StimulAI image gallery"
               className={cn(
-                'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 w-full transition-[filter,opacity] duration-500',
+                'grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 w-full transition-[filter,opacity] duration-300',
                 isOpen && 'grayscale opacity-30'
               )}
               variants={revealContainer}
@@ -195,7 +231,7 @@ export function LightboxGallery() {
               {images.map((image, index) => (
                 <motion.button
                   aria-label={`Open ${image.title}`}
-                  className="group relative aspect-square overflow-hidden rounded-lg md:rounded-xl border border-text-inverse/10 bg-text-inverse/[0.035] text-left shadow-hairline transition-all duration-300 ease-out hover:border-accent/70 hover:shadow-2xl focus-visible:outline-none focus-visible:shadow-focus"
+                  className="group relative aspect-[4/3] lg:aspect-[16/11] overflow-hidden rounded-md md:rounded-xl border border-text-inverse/10 bg-text-inverse/[0.035] text-left shadow-hairline transition-[box-shadow,border-color] duration-200 ease-out hover:border-accent/70 hover:shadow-2xl focus-visible:outline-none focus-visible:shadow-focus active:scale-[0.98]"
                   key={image.id}
                   onClick={() => openLightbox(index)}
                   type="button"
@@ -208,7 +244,7 @@ export function LightboxGallery() {
                   >
                     <img
                       alt={image.alt}
-                      className="size-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="size-full object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
                       decoding="async"
                       draggable="false"
                       loading={index < 4 ? 'eager' : 'lazy'}
@@ -217,7 +253,7 @@ export function LightboxGallery() {
                   </motion.div>
                   <span
                     aria-hidden="true"
-                    className="absolute inset-0 rounded-lg md:rounded-xl bg-black/0 transition-colors duration-300 group-hover:bg-black/20"
+                    className="absolute inset-0 rounded-lg md:rounded-xl bg-black/0 transition-colors duration-200 group-hover:bg-black/20"
                   />
                 </motion.button>
               ))}
@@ -244,7 +280,7 @@ export function LightboxGallery() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="absolute top-4 left-1/2 -translate-x-1/2 z-[110] px-5 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full font-mono text-xs tracking-[0.25em] uppercase backdrop-blur-md border border-white/20 transition-all duration-300 shadow-xl flex items-center gap-2"
+                    className="absolute top-4 left-1/2 -translate-x-1/2 z-[110] px-5 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full font-mono text-xs tracking-[0.25em] uppercase backdrop-blur-md border border-white/20 transition-[color,background-color,border-color] duration-200 shadow-xl flex items-center gap-2 active:scale-[0.95]"
                     onClick={closeLightbox}
                     type="button"
                   >
@@ -257,7 +293,7 @@ export function LightboxGallery() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
-                    className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-[110] p-3 text-white/50 hover:text-white transition-colors duration-300"
+                    className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-[110] p-3 text-white/50 hover:text-white transition-colors duration-200 active:scale-[0.95]"
                     onClick={() => moveLightbox(-1)}
                     type="button"
                   >
@@ -291,7 +327,7 @@ export function LightboxGallery() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
-                    className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-[110] p-3 text-white/50 hover:text-white transition-colors duration-300"
+                    className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-[110] p-3 text-white/50 hover:text-white transition-colors duration-200 active:scale-[0.95]"
                     onClick={() => moveLightbox(1)}
                     type="button"
                   >

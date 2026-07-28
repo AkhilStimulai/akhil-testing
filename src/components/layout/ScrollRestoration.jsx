@@ -38,9 +38,9 @@ function getHashTarget(hash) {
   const targetId = hash.slice(1);
 
   try {
-    return document.getElementById(decodeURIComponent(targetId));
+    return document.getElementById(decodeURIComponent(targetId)) || document.querySelector(`[data-section-id="${decodeURIComponent(targetId)}"]`);
   } catch {
-    return document.getElementById(targetId);
+    return document.getElementById(targetId) || document.querySelector(`[data-section-id="${targetId}"]`);
   }
 }
 
@@ -73,7 +73,7 @@ export function ScrollRestoration() {
   }, [pathname, search]);
 
   useLayoutEffect(() => {
-    if (hash) {
+    if (hash && pathname !== '/') {
       let frame = 0;
       let timeout = 0;
       let attempts = 0;

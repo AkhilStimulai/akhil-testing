@@ -1,6 +1,8 @@
 
 
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import DomainCard from "./DomainCard";
 import { domains } from "./domainSection.data";
@@ -31,16 +33,40 @@ const itemVariants = {
 
 export function DomainsSection() {
   return (
-    <section className="relative lg:min-h-screen lg:h-screen overflow-hidden bg-surface-inverse text-text-inverse py-section-sm lg:py-0">
+    <section data-section-id="home-domains" className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-0">
 
-      {/* Background Glow */}
-
+      {/* Background Glow (Desktop only, hidden on mobile to remove shadow overlay) */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(183,24,43,.18),transparent_28%),radial-gradient(circle_at_90%_70%,rgba(255,255,255,.04),transparent_35%)]"
+        className="hidden md:block absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(183,24,43,.18),transparent_28%),radial-gradient(circle_at_90%_70%,rgba(255,255,255,.04),transparent_35%)]"
       />
 
-      <div className="relative mx-auto flex min-h-full max-w-container flex-col justify-center px-container-sm md:px-container-md lg:px-container-lg">
+      {/* MOBILE VIEW (Frame 2) — 100dvh strictly fitting without overflow */}
+      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-4 overflow-hidden relative z-10 text-left bg-surface-inverse">
+        {/* Header with normal site Tag and Statement */}
+        <div className="shrink-0 mb-1">
+          <p className="font-body text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+            Engineering Domains
+          </p>
+          <h2 className="mt-0.5 font-display text-[clamp(1.15rem,4.8vw,1.45rem)] font-bold text-text-inverse leading-tight">
+            Engineering for Today.
+            <br />
+            Solutions for <span className="text-accent">Tomorrow.</span>
+          </h2>
+        </div>
+
+        {/* Stack of 4 Domain Cards filling remaining viewport height */}
+        <div className="flex-1 min-h-0 flex flex-col justify-between gap-1.5 mt-1">
+          {domains.map((domain) => (
+            <div key={domain.id} className="flex-1 min-h-0 overflow-hidden">
+              <DomainCard domain={domain} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* DESKTOP VIEW */}
+      <div className="hidden md:flex relative mx-auto w-full max-w-container flex-col justify-center px-container-sm md:px-container-md lg:px-container-lg">
 
         {/* Header */}
 
@@ -49,25 +75,25 @@ export function DomainsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-space-24 grid gap-space-24 lg:grid-cols-2 lg:items-end"
+          className="mb-space-12 sm:mb-space-24 grid gap-2 lg:grid-cols-2 lg:items-end"
         >
 
           <div>
 
             <motion.p
               variants={itemVariants}
-              className="font-body text-label font-medium uppercase tracking-[0.35em] text-accent"
+              className="font-body text-[10px] sm:text-label font-medium uppercase tracking-[0.25em] sm:tracking-[0.35em] text-accent"
             >
               Engineering Domains
             </motion.p>
 
             <motion.h2
               variants={itemVariants}
-              className="mt-space-16 font-display text-heading-xl md:text-display-m text-text-inverse"
+              className="mt-1 sm:mt-space-16 font-display text-heading-s sm:text-heading-xl md:text-display-m text-text-inverse leading-tight"
             >
               Engineering for Today.
-              <br />
-              Solutions for
+              <br className="hidden sm:inline" />
+              {' '}Solutions for
               <span className="text-accent">
                 {" "}
                 Tomorrow.
@@ -88,7 +114,7 @@ export function DomainsSection() {
             once: true,
             amount: 0.2,
           }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-space-16 mt-space-32 lg:mt-0 flex-1"
+          className="grid grid-cols-2 gap-2 sm:gap-space-16 mt-2 lg:mt-0"
         >
           {domains.map((domain) => (
             <motion.div

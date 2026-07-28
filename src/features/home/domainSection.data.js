@@ -77,7 +77,7 @@ export const domains = [
 
     icon: Bike,
 
-    href: "/domains#sports",
+    href: "/domains/sports-engineering",
   },
 
   {
@@ -92,7 +92,7 @@ export const domains = [
 
     icon: CarFront,
 
-    href: "/domains#mobility",
+    href: "/domains/advanced-mobility",
   },
 
   {
@@ -107,7 +107,7 @@ export const domains = [
 
     icon: Bot,
 
-    href: "/domains#robotics",
+    href: "/domains/automation-robotics",
   },
 
   {
@@ -122,6 +122,8 @@ export const domains = [
 
     icon: Leaf,
 
-    href: "/domains#sustainability",
+    href: "/domains/environmental-sustainability",
   },
 ];
+
+export const DOMAIN_SECTION_ITEMS = domains;

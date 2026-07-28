@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import {
-  Activity,
-  ArrowRight,
-  BrainCircuit,
-  Cpu,
-  Factory,
-  Navigation,
-  RadioTower,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { gsap } from '@/components/animations';
 import { ROUTES } from '@/constants';
@@ -19,14 +11,7 @@ import rcxImage from '@/assets/images/featured-rcx.jpg';
 
 const timeline = ['Research', 'Prototype', 'Engineering', 'Testing', 'RCX'];
 
-const highlights = [
-  { title: 'Artificial Intelligence', icon: BrainCircuit },
-  { title: 'Embedded Sensors', icon: Cpu },
-  { title: 'Navigation', icon: Navigation },
-  { title: 'Connected Platform', icon: RadioTower },
-  { title: 'Performance Analytics', icon: Activity },
-  { title: 'Precision Manufacturing', icon: Factory },
-];
+
 
 const revealContainer = {
   hidden: {},
@@ -121,7 +106,7 @@ export function ProductReveal({ imageRef }) {
   );
 }
 
-export function EngineeringTimeline({ activeStage, progressRef }) {
+export function EngineeringTimeline({ activeStage: _activeStage, progressRef: _progressRef }) {
   return (
     <motion.div
       id="rcx-engineering-story"
@@ -132,22 +117,7 @@ export function EngineeringTimeline({ activeStage, progressRef }) {
   );
 }
 
-export function HighlightItem({ title, icon: Icon, index }) {
-  return (
-    <motion.li
-      className="group border-t border-text-inverse/12 py-space-24"
-      variants={revealItem}
-    >
-      <div className="grid gap-space-16 md:grid-cols-[4rem_1fr_auto] md:items-center">
-        <Icon aria-hidden="true" className="size-icon-24 text-accent" />
-        <h3 className="font-heading text-heading-s text-text-inverse">{title}</h3>
-        <span className="font-body text-caption text-text-inverse/36 transition-colors duration-medium ease-luxury group-hover:text-accent">
-          {String(index + 1).padStart(2, '0')}
-        </span>
-      </div>
-    </motion.li>
-  );
-}
+
 
 export function RCXShowcase({ imageRef }) {
   return <ProductReveal imageRef={imageRef} />;
@@ -222,9 +192,10 @@ export function FeaturedInnovation() {
 
   return (
     <section
+      data-section-id="home-rcx"
       ref={sectionRef}
       aria-labelledby="featured-innovation-title"
-      className="relative isolate lg:min-h-screen lg:h-screen overflow-hidden bg-surface-inverse text-text-inverse [--rcx-spotlight-x:48%] py-section-sm lg:py-0"
+      className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse [--rcx-spotlight-x:48%] py-4 lg:py-0 pt-navbar lg:pt-0"
     >
       <div
         aria-hidden="true"
@@ -240,44 +211,89 @@ export function FeaturedInnovation() {
         }}
       />
 
+      {/* MOBILE VIEW (Frame 3: Intro Section) — Equal 50/50 split fitting 100dvh */}
+      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-4 overflow-hidden relative z-10 text-left gap-2">
+        {/* Top Equal Block: Text Content & CTAs */}
+        <div className="flex-1 min-h-0 flex flex-col justify-center rounded-xl border border-white/10 bg-[#121212]/80 p-3 relative overflow-hidden">
+          <p className="font-body text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+            Featured Innovation
+          </p>
+          <h2 className="mt-0.5 font-display text-[clamp(1.2rem,5vw,1.45rem)] font-bold text-text-inverse leading-tight">
+            RCX
+          </h2>
+          <p className="font-heading text-[clamp(0.78rem,3vw,0.9rem)] font-semibold text-text-inverse/90 leading-tight mt-0.5">
+            The First Expression of STIMULAI
+          </p>
+          <p className="font-body text-[clamp(0.64rem,2.4vw,0.72rem)] text-text-inverse/75 leading-relaxed mt-1 max-w-prose">
+            RCX combines intelligent engineering, artificial intelligence, connected systems and precision design into a cycling experience shaped by the way people move, decide and perform.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="mt-2.5 flex flex-row items-center gap-2">
+            <Link
+              to={ROUTES.PRODUCTS}
+              className="inline-flex h-7 items-center justify-center gap-1.5 rounded-full border border-text-inverse bg-text-inverse px-3 font-body text-[9px] font-medium text-text-primary hover:bg-transparent hover:text-text-inverse transition-colors active:scale-95"
+            >
+              Explore RCX
+              <ArrowRight className="size-2.5" />
+            </Link>
+            <a
+              href="#rcx-engineering-story"
+              className="inline-flex h-7 items-center justify-center rounded-full border border-text-inverse/24 bg-text-inverse/5 px-3 font-body text-[9px] font-medium text-text-inverse hover:border-accent hover:text-accent transition-colors active:scale-95"
+            >
+              Engineering Story
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom Equal Block: RCX Showcase Image */}
+        <div className="flex-1 min-h-0 w-full rounded-xl bg-[#0B0B0B] border border-white/10 overflow-hidden relative flex items-center justify-center p-2 group">
+          {/* Ambient Red Glow Spotlight */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(183,24,43,0.25),transparent_65%)]" />
+
+          {/* Bike Image with object-contain for full uncropped view */}
+          <img
+            src={rcxImage}
+            alt="RCX engineering design"
+            className="relative z-10 max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </div>
+
+      {/* DESKTOP VIEW */}
       <motion.div
-        className="mx-auto grid min-h-full max-w-container px-container-sm md:px-container-md lg:px-container-lg gap-space-48 lg:gap-space-64 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:items-center pt-section-sm lg:pt-navbar"
+        className="hidden md:grid mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg gap-3 sm:gap-space-32 lg:gap-space-48 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:items-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.24 }}
         variants={revealContainer}
       >
         <div className="max-w-prose">
-          <motion.p className="font-body text-label font-medium uppercase tracking-[0.35em] text-accent" variants={revealItem}>
+          <motion.p className="font-body text-[10px] sm:text-label font-medium uppercase tracking-[0.25em] sm:tracking-[0.35em] text-accent" variants={revealItem}>
             Featured Innovation
           </motion.p>
           <motion.p
-            className="mt-space-16 font-display text-heading-xl md:text-display-m text-text-inverse"
+            className="mt-1 sm:mt-space-16 font-display text-heading-s sm:text-heading-xl md:text-display-m text-text-inverse"
             variants={revealItem}
           >
             RCX
           </motion.p>
           <h2
-            className="mt-space-8 font-display text-heading-xl text-text-inverse md:text-display-m"
+            className="mt-1 sm:mt-space-8 font-display text-heading-s sm:text-heading-xl text-text-inverse md:text-display-m leading-tight"
             id="featured-innovation-title"
           >
             <span className="block overflow-hidden">
               <motion.span className="block" variants={revealItem}>
-                The First Expression
-              </motion.span>
-            </span>
-            <span className="block overflow-hidden">
-              <motion.span className="block" variants={revealItem}>
-                of STIMULAI
+                The First Expression of STIMULAI
               </motion.span>
             </span>
           </h2>
-          <motion.p className="mt-space-16 font-body text-body-l font-normal text-text-inverse/70" variants={revealItem}>
+          <motion.p className="mt-2 sm:mt-space-16 font-body text-body-s sm:text-body-l font-normal text-text-inverse/70 line-clamp-3 sm:line-clamp-none" variants={revealItem}>
             RCX combines intelligent engineering, artificial intelligence, connected
             systems and precision design into a cycling experience shaped by the
             way people move, decide and perform.
           </motion.p>
-          <div className="mt-space-32">
+          <div className="mt-3 sm:mt-space-32">
             <CTAGroup />
           </div>
         </div>

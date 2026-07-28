@@ -22,19 +22,19 @@ export function Footer() {
         }}
       />
 
-      <div className="mx-auto max-w-container px-container-sm md:px-container-md lg:px-container-lg py-section-sm">
+      <div className="mx-auto max-w-container px-container-sm md:px-container-md lg:px-container-lg py-3 lg:py-6">
 
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col gap-4 lg:gap-12 lg:flex-row lg:items-start lg:justify-between">
 
           <div>
             <Logo inverse as="span" />
 
-            <p className="mt-6 max-w-sm font-body text-body-small text-text-inverse/60">
+            <p className="mt-3 lg:mt-6 max-w-sm font-body text-body-small text-text-inverse/60">
               Engineering Tomorrow's Intelligence.
             </p>
           </div>
 
-          <div className="flex flex-col items-start gap-6 lg:items-end">
+          <div className="flex flex-col items-start gap-3 lg:gap-6 lg:items-end">
 
             <nav>
               <ul className="flex flex-wrap gap-8 font-body text-body-small">
@@ -58,7 +58,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-text-inverse/70 transition-all duration-300 hover:border-accent hover:text-accent"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-text-inverse/70 transition-[color,border-color] duration-200 hover:border-accent hover:text-accent active:scale-[0.95]"
               >
                 <Instagram size={18} />
               </a>
@@ -68,7 +68,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-text-inverse/70 transition-all duration-300 hover:border-accent hover:text-accent"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-text-inverse/70 transition-[color,border-color] duration-200 hover:border-accent hover:text-accent active:scale-[0.95]"
               >
                 <Linkedin size={18} />
               </a>
@@ -79,7 +79,7 @@ export function Footer() {
 
         </div>
 
-        <div className="my-space-40 h-px bg-text-inverse/10" />
+        <div className="my-3 lg:my-space-40 h-px bg-text-inverse/10" />
 
         <div className="flex flex-col gap-space-16 lg:flex-row lg:items-center lg:justify-between text-text-inverse/50 font-body text-body-small">
 

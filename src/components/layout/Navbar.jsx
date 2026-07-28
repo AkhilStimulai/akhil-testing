@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Menu } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { cn } from '@/utils';
+import { useScrollSpy } from '@/hooks';
 import { Logo } from './Logo.jsx';
 import { MobileMenu } from './MobileMenu.jsx';
 import { PRIMARY_NAV_ITEMS } from './navigation.js';
@@ -12,12 +13,9 @@ function useNavbarScrollState() {
 
   useEffect(() => {
     let frame = 0;
-    let lastY = window.scrollY;
 
     function update() {
-      const currentY = window.scrollY;
-      setIsScrolled(currentY > 12);
-      lastY = currentY;
+      setIsScrolled(window.scrollY > 12);
       frame = 0;
     }
 
@@ -41,7 +39,20 @@ function useNavbarScrollState() {
   return isScrolled;
 }
 
-function getIsNavItemActive(item, isActive, location) {
+const scrollSpySections = [
+  { id: 'home-hero', path: '/' },
+  { id: 'home-domains', path: '/domains' },
+  { id: 'home-rcx', path: '/rcx' },
+  { id: 'home-gallery', path: '/gallery' },
+  { id: 'home-reviews', path: '/reviews' },
+  { id: 'home-contact', path: '/contact' },
+];
+
+function getIsNavItemActive(item, isActive, location, activePath) {
+  if (location.pathname === '/' && activePath) {
+    return activePath === item.to;
+  }
+
   if (item.hash) {
     return location.pathname === '/' && location.hash === item.hash;
   }
@@ -58,6 +69,7 @@ export function Navbar() {
   const location = useLocation();
   const isScrolled = useNavbarScrollState();
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const activePath = useScrollSpy(scrollSpySections);
 
   return (
     <>
@@ -80,8 +92,15 @@ export function Navbar() {
                     <NavLink
                       className="font-body text-navigation text-text-inverse/70 transition-ui duration-medium ease-luxury hover:text-text-inverse focus-visible:outline-none focus-visible:shadow-focus"
                       end={item.to === '/'}
+                      onClick={(e) => {
+                        if (item.to === '/' && location.pathname === '/') {
+                          e.preventDefault();
+                          window.history.pushState(null, '', '/');
+                          window.dispatchEvent(new CustomEvent('sectionNavigate', { detail: 'home-hero' }));
+                        }
+                      }}
                       style={({ isActive }) =>
-                        getIsNavItemActive(item, isActive, location)
+                        getIsNavItemActive(item, isActive, location, activePath)
                           ? {
                             color: 'rgb(183, 24, 43)',
                             textShadow: '0 0 12px rgba(183,24,43,0.7), 0 0 28px rgba(183,24,43,0.35)',
@@ -120,7 +139,7 @@ export function Navbar() {
         </div>
       </header>
 
-      <MobileMenu isOpen={isMenuOpen} items={PRIMARY_NAV_ITEMS} onClose={closeMenu} />
+      <MobileMenu isOpen={isMenuOpen} items={PRIMARY_NAV_ITEMS} onClose={closeMenu} activePath={activePath} />
     </>
   );
 }

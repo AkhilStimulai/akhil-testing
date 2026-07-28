@@ -14,9 +14,10 @@ import {
 
 export function RootLayout() {
   const location = useLocation();
+  const isHomePage = location.pathname === '/' || location.pathname === '/home';
 
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden">
+    <div className="flex min-h-screen flex-col">
       <SkipLink />
       <ScrollRestoration />
       <ScrollProgress />
@@ -33,7 +34,7 @@ export function RootLayout() {
         </Suspense>
       </main>
 
-      <Footer />
+      {!isHomePage && <Footer />}
       <BackToTop />
     </div>
   );

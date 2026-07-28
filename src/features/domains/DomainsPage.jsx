@@ -5,7 +5,7 @@ import { DomainsSection } from '../home/DomainsSection.jsx';
 export function DomainsPage() {
   return (
     <RouteDocument meta={DOMAINS_META}>
-      <div className="bg-surface-inverse pt-[calc(var(--layout-navbar-height)+1rem)]">
+      <div className="bg-surface-inverse">
         <DomainsSection />
       </div>
     </RouteDocument>

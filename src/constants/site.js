@@ -15,7 +15,7 @@ export const SITE_CONFIG = Object.freeze({
   contact: {
     email: 'connect@stimulai.in',
     phone: '+91 8860253376',
-    address: 'Arcadia, South City II, Sector 49, Gurugram, Haryana 122018',
+    address: 'Arcadia, South City II, Sector 49, Gurugram, Haryana',
     mapUrl: 'https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=28.4187059,77.0522897',
   },
   social: {

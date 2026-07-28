@@ -5,12 +5,10 @@ import { RootLayout } from '@/layouts';
 import { lazyNamed } from '@/utils';
 
 const HomePage = lazyNamed(() => import('@/features/home'), 'HomePage');
-const CompanyPage = lazyNamed(() => import('@/features/company'), 'CompanyPage');
 const DomainsPage = lazyNamed(() => import('@/features/domains'), 'DomainsPage');
-const TechnologyPage = lazyNamed(() => import('@/features/technology'), 'TechnologyPage');
+const DomainDetailPage = lazyNamed(() => import('@/features/domains'), 'DomainDetailPage');
 const ProductsPage = lazyNamed(() => import('@/features/products'), 'ProductsPage');
-const JournalPage = lazyNamed(() => import('@/features/journal'), 'JournalPage');
-const AboutPage = lazyNamed(() => import('@/features/about'), 'AboutPage');
+const ProductDetailPage = lazyNamed(() => import('@/features/products'), 'ProductDetailPage');
 const ContactPage = lazyNamed(() => import('@/features/contact'), 'ContactPage');
 const GalleryPage = lazyNamed(() => import('@/features/gallery'), 'GalleryPage');
 const ReviewsPage = lazyNamed(() => import('@/features/reviews'), 'ReviewsPage');
@@ -29,12 +27,10 @@ export const appRoutes = [
       { path: 'gallery', element: <GalleryPage /> },
       { path: 'reviews', element: <ReviewsPage /> },
 
-      { path: ROUTE_SEGMENTS.COMPANY, element: <CompanyPage /> },
       { path: ROUTE_SEGMENTS.DOMAINS, element: <DomainsPage /> },
-      { path: ROUTE_SEGMENTS.TECHNOLOGY, element: <TechnologyPage /> },
+      { path: ROUTE_SEGMENTS.DOMAIN_DETAIL, element: <DomainDetailPage /> },
       { path: ROUTE_SEGMENTS.PRODUCTS, element: <ProductsPage /> },
-      { path: ROUTE_SEGMENTS.JOURNAL, element: <JournalPage /> },
-      { path: ROUTE_SEGMENTS.ABOUT, element: <AboutPage /> },
+      { path: ROUTE_SEGMENTS.PRODUCT_DETAIL, element: <ProductDetailPage /> },
       { path: ROUTE_SEGMENTS.CONTACT, element: <ContactPage /> },
       { path: ROUTE_SEGMENTS.NOT_FOUND, element: <NotFoundPage /> },
       { path: '*', element: <NotFoundPage /> },

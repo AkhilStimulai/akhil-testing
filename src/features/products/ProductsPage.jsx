@@ -109,8 +109,8 @@ function VerticalSidebar() {
 
 function HeroImageContainer() {
   return (
-    <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[55%] max-w-full lg:max-w-[900px] z-30 pointer-events-none flex justify-center lg:justify-end mt-6 lg:mt-0">
-      <div className="w-full max-w-[500px] lg:max-w-[800px] aspect-[2/1] border border-accent/20 rounded-3xl overflow-hidden bg-gradient-to-tr from-black/80 to-transparent backdrop-blur-sm shadow-2xl relative">
+    <div className="relative lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[50%] max-w-full lg:max-w-[720px] z-30 pointer-events-none flex justify-center lg:justify-end mt-4 lg:mt-0">
+      <div className="w-full max-w-[500px] lg:max-w-[700px] aspect-[2/1] border border-accent/20 rounded-3xl overflow-hidden bg-gradient-to-tr from-black/80 to-transparent backdrop-blur-sm shadow-2xl relative">
         {/* Subtle grid background */}
         <div
           aria-hidden="true"
@@ -143,10 +143,10 @@ function SpecsDashboard() {
   const activeTabData = tabs.find((t) => t.id === activeTab);
 
   return (
-    <div className="w-full z-40 flex flex-col md:flex-row gap-6 bg-text-inverse/[0.02] border border-text-inverse/5 rounded-3xl p-6 backdrop-blur-md shadow-2xl relative">
+    <div className="w-full z-40 flex flex-col md:flex-row gap-4 bg-text-inverse/[0.02] border border-text-inverse/5 rounded-2xl lg:rounded-3xl p-4 lg:p-5 backdrop-blur-md shadow-2xl relative">
       {/* Left Sidebar (Tabs) */}
-      <div className="w-full md:w-1/4 flex flex-col gap-2 border-b md:border-b-0 md:border-r border-text-inverse/10 pb-4 md:pb-0 md:pr-4">
-        <p className="text-text-inverse/40 font-body text-caption font-bold uppercase tracking-[0.2em] mb-space-8 pl-space-16">
+      <div className="w-full md:w-1/4 flex flex-col gap-1 border-b md:border-b-0 md:border-r border-text-inverse/10 pb-3 md:pb-0 md:pr-3">
+        <p className="text-text-inverse/40 font-body text-caption font-bold uppercase tracking-[0.2em] mb-space-4 pl-space-12">
           System Analysis
         </p>
 
@@ -154,7 +154,7 @@ function SpecsDashboard() {
           <button
             key={tab.id}
             className={cn(
-              'w-full text-left px-space-16 py-space-12 rounded-r-lg font-heading font-semibold text-body-small tracking-wide transition-all flex items-center justify-between group',
+              'w-full text-left px-space-12 py-space-8 rounded-r-lg font-heading font-semibold text-body-small tracking-wide transition-[color,background-color,border-color] duration-200 flex items-center justify-between group',
               activeTab === tab.id
                 ? 'text-accent border-l-[3px] border-accent bg-accent/10'
                 : 'text-text-inverse/50 border-l-[3px] border-transparent hover:text-text-inverse hover:bg-text-inverse/5',
@@ -165,7 +165,7 @@ function SpecsDashboard() {
             <span>{tab.label}</span>
             <span
               className={cn(
-                'transition-all',
+                'transition-[transform,opacity] duration-200',
                 activeTab === tab.id
                   ? 'text-accent opacity-100 translate-x-0'
                   : 'opacity-0 group-hover:opacity-100 group-hover:translate-x-1',
@@ -178,11 +178,11 @@ function SpecsDashboard() {
       </div>
 
       {/* Right Content Area (Dynamic Grid) */}
-      <div className="w-full md:w-3/4 pl-0 md:pl-6 relative min-h-[200px] flex items-center">
+      <div className="w-full md:w-3/4 pl-0 md:pl-4 relative min-h-[160px] flex items-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            className="grid grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-6 w-full"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-6 w-full"
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -203,7 +203,7 @@ function SpecsDashboard() {
 export function ProductsPage() {
   return (
     <RouteDocument meta={PRODUCTS_META}>
-      <main className="relative isolate min-h-screen lg:h-screen w-full overflow-y-auto lg:overflow-hidden bg-surface-inverse text-text-inverse">
+      <main className="relative isolate min-h-screen lg:h-dvh lg:max-h-dvh w-full overflow-y-auto lg:overflow-hidden bg-surface-inverse text-text-inverse">
         {/* Background Accents */}
         <div
           aria-hidden="true"
@@ -239,9 +239,9 @@ export function ProductsPage() {
         <VerticalSidebar />
 
         {/* Main Content Wrapper */}
-        <div className="relative w-full min-h-screen lg:h-full max-w-container mx-auto flex flex-col justify-between pt-navbar pb-section-sm px-container-sm md:px-container-md lg:px-container-lg lg:pr-space-120 2xl:pr-container-lg z-10 gap-space-48 lg:gap-space-24">
+        <div className="relative w-full min-h-screen lg:min-h-0 lg:h-full max-w-container mx-auto flex flex-col justify-between pt-navbar pb-4 lg:pb-6 px-container-sm md:px-container-md lg:px-container-lg lg:pr-space-120 2xl:pr-container-lg z-10 gap-space-24 lg:gap-space-16">
           {/* Top Half: Hero & Image */}
-          <div className="flex flex-col lg:flex-row justify-between lg:items-center w-full relative flex-1 min-h-0 gap-space-40 lg:gap-0">
+          <div className="flex flex-col lg:flex-row justify-between lg:items-center w-full relative flex-1 min-h-0 gap-space-32 lg:gap-0">
             {/* Left Copy Section */}
             <motion.div
               className="flex flex-col z-20 max-w-md"
@@ -250,21 +250,21 @@ export function ProductsPage() {
               variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } }}
             >
               <motion.p
-                className="font-body text-label font-bold tracking-[0.5em] text-accent uppercase mb-space-16"
+                className="font-body text-label font-bold tracking-[0.5em] text-accent uppercase mb-space-8 lg:mb-space-12"
                 variants={fadeUp}
                 custom={0}
               >
                 The Next Evolution
               </motion.p>
               <motion.h2
-                className="font-display text-display-m md:text-display-l lg:text-display-xl text-text-inverse mb-space-16"
+                className="font-display text-display-m md:text-display-l lg:text-display-xl text-text-inverse mb-space-8 lg:mb-space-12"
                 variants={fadeUp}
                 custom={1}
               >
                 FUTURE
               </motion.h2>
               <motion.p
-                className="text-text-inverse/50 font-body text-body-l mb-space-40 max-w-xs"
+                className="text-text-inverse/50 font-body text-body-m md:text-body-l mb-space-32 lg:mb-space-40 max-w-xs"
                 variants={fadeUp}
                 custom={2}
               >
@@ -272,7 +272,7 @@ export function ProductsPage() {
               </motion.p>
               <motion.div variants={fadeUp} custom={3}>
                 <Link
-                  className="group inline-flex items-center gap-space-12 bg-accent hover:bg-accent-hover text-text-inverse font-body text-button font-bold py-space-16 px-space-40 rounded-full w-max uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(183,24,43,0.4)] transition-all duration-300 transform hover:scale-105"
+                  className="group inline-flex items-center gap-space-12 bg-accent hover:bg-accent-hover text-text-inverse font-body text-button font-bold py-space-12 lg:py-space-16 px-space-32 lg:px-space-40 rounded-full w-max uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(183,24,43,0.4)] transition-[transform,background-color] duration-200 ease-out hover:scale-105 active:scale-[0.97]"
                   to={ROUTES.CONTACT}
                 >
                   Pre-Order Now

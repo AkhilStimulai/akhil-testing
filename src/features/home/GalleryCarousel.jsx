@@ -172,7 +172,7 @@ export function GalleryCarousel() {
       ref={sectionRef}
       aria-labelledby="home-gallery-title"
       className="relative isolate min-h-screen overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse"
-      id="home-gallery"
+      data-section-id="home-gallery"
       onKeyDown={handleKeyDown}
     >
       <div
@@ -200,7 +200,7 @@ export function GalleryCarousel() {
           <motion.header className="max-w-[52rem]" variants={revealItem}>
             <p className="font-body text-label text-accent">Gallery</p>
             <h2
-              className="mt-space-16 font-display text-heading-xl text-text-inverse md:text-display-m"
+              className="mt-space-16 font-display text-heading-s sm:text-heading-xl text-text-inverse md:text-display-m"
               id="home-gallery-title"
             >
               Inside the StimulAI Build.
