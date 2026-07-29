@@ -40,7 +40,7 @@ export const ReviewCard = memo(
     };
 
     const reviewText = review.review;
-    const maxChars = compact ? 150 : 240;
+    const maxChars = compact ? 120 : 160;
     const isLongText = reviewText.length > maxChars;
 
     const truncatedText = isLongText
@@ -54,20 +54,20 @@ export const ReviewCard = memo(
     return (
       <motion.article
         ref={ref}
-        className="h-full"
+        className="h-full min-h-0 w-full flex flex-col"
         variants={cardVariants}
         style={{ perspective: '1200px' }}
       >
         <div
-          className="relative w-full h-full transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] [transform-style:preserve-3d]"
+          className="relative w-full flex-1 min-h-0 transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] [transform-style:preserve-3d]"
           style={{ transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
         >
           {/* ===== FRONT FACE ===== */}
           <div
-            className={`w-full h-full group flex flex-col border border-text-inverse/10 bg-text-inverse/[0.035] transition-[border-color,background-color] duration-medium ease-luxury hover:border-accent/40 hover:bg-text-inverse/[0.055] shadow-elevated overflow-hidden [backface-visibility:hidden] ${isFlipped ? 'absolute inset-0' : 'relative'}`}
+            className={`w-full h-full min-h-0 group flex flex-col border border-text-inverse/10 bg-text-inverse/[0.035] transition-[border-color,background-color] duration-medium ease-luxury hover:border-accent/40 hover:bg-text-inverse/[0.055] shadow-elevated overflow-hidden [backface-visibility:hidden] ${isFlipped ? 'absolute inset-0' : 'relative'}`}
           >
             {review.productImage && (
-              <div className={`relative w-full overflow-hidden border-b border-text-inverse/10 group/img ${compact ? 'aspect-[16/9]' : 'aspect-[16/10]'}`}>
+              <div className={`relative w-full overflow-hidden border-b border-text-inverse/10 shrink-0 group/img ${compact ? 'aspect-[16/9]' : 'aspect-[16/10] lg:aspect-auto lg:h-[28%] 2xl:h-[45%]'}`}>
                 {isArray ? (
                   <>
                     <div className="absolute inset-0 size-full bg-surface-inverse" />
@@ -128,16 +128,16 @@ export const ReviewCard = memo(
                 )}
               </div>
             )}
-            <div className={`flex flex-col flex-1 ${compact ? 'p-2.5' : 'p-3 sm:p-space-24'}`}>
-              <h3 className={`font-heading text-text-inverse transition-colors duration-medium ease-luxury group-hover:text-accent font-bold ${compact ? 'text-[13px] mb-0.5' : 'text-body-s sm:text-heading-s mb-1 sm:mb-space-12'}`}>
+            <div className={`flex flex-col flex-1 min-h-0 overflow-y-auto ${compact ? 'p-2.5' : 'p-3 sm:p-space-24 lg:p-4 2xl:p-6'}`}>
+              <h3 className={`font-heading text-text-inverse transition-colors duration-medium ease-luxury group-hover:text-accent font-bold shrink-0 ${compact ? 'text-[13px] mb-0.5' : 'text-body-s sm:text-heading-s lg:text-body-l mb-1 sm:mb-space-12 lg:mb-1'}`}>
                 {review.name}
               </h3>
               {review.tagline && (
-                <p className={`font-heading text-accent font-semibold tracking-wider italic ${compact ? 'text-[10px] mb-0.5' : 'text-[11px] sm:text-body-small mb-1 sm:mb-space-12'}`}>
+                <p className={`font-heading text-accent font-semibold tracking-wider italic shrink-0 ${compact ? 'text-[10px] mb-0.5' : 'text-[11px] sm:text-body-small lg:text-[11px] mb-1 sm:mb-space-12 lg:mb-2'}`}>
                   "{review.tagline}"
                 </p>
               )}
-              <p className={`font-body text-text-inverse/76 leading-relaxed ${compact ? 'text-[11px]' : 'text-body-xs sm:text-body-m'}`}>
+              <p className={`font-body text-text-inverse/76 leading-relaxed ${compact ? 'text-[11px]' : 'text-body-xs sm:text-body-m lg:text-body-xs 2xl:text-body-m'}`}>
                 {isLongText ? `${truncatedText}...` : reviewText}
                 {isLongText && (
                   <button
@@ -156,7 +156,7 @@ export const ReviewCard = memo(
 
           {/* ===== BACK FACE ===== */}
           <div
-            className={`w-full flex flex-col border border-accent/30 shadow-elevated [backface-visibility:hidden] ${isFlipped ? 'relative' : 'absolute inset-0 h-full'}`}
+            className={`w-full flex flex-col min-h-0 border border-accent/30 shadow-elevated [backface-visibility:hidden] ${isFlipped ? 'relative h-full' : 'absolute inset-0 h-full'}`}
             style={{
               transform: 'rotateY(180deg)',
               background: 'linear-gradient(165deg, rgba(183,24,43,0.14) 0%, rgba(30,30,32,0.98) 30%, rgba(22,22,24,1) 100%)',
@@ -197,7 +197,7 @@ export const ReviewCard = memo(
             </div>
 
             {/* Full review text */}
-            <div className="px-4 py-3 sm:px-5 sm:py-4">
+            <div className="flex-1 min-h-0 overflow-y-auto px-4 py-3 sm:px-5 sm:py-4">
               <p className={`font-body text-text-inverse/80 leading-relaxed whitespace-pre-line ${compact ? 'text-[11px]' : 'text-[12px] sm:text-body-small'}`}>
                 {reviewText}
               </p>

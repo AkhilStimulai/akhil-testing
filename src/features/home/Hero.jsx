@@ -142,7 +142,7 @@ export function Hero() {
       onPointerMove={handlePointerMove}
     >
       {/* MOBILE VIEW (Frame 1) — Hero image + text + CTAs strictly fitting 100dvh */}
-      <div className="flex md:hidden flex-col justify-end w-full h-screen-dvh pb-10 px-5 overflow-hidden text-center relative z-10 bg-black">
+      <div className="flex md:hidden flex-col justify-end w-full h-screen-dvh pb-10 px-container-sm overflow-hidden text-center relative z-10 bg-black">
         {/* Background Image */}
         <motion.img
           key={`mobile-hero-${currentImage}`}

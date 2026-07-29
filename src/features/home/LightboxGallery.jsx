@@ -143,7 +143,7 @@ export function LightboxGallery() {
     <LayoutGroup id="premium-lightbox-gallery">
       <section
         aria-labelledby="home-gallery-title"
-        className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-0"
+        className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden scroll-mt-[var(--layout-navbar-height)] bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-[calc(var(--layout-navbar-height)+1rem)] 2xl:pt-[calc(var(--layout-navbar-height)+3rem)]"
         data-section-id="home-gallery"
       >
         <div
@@ -161,7 +161,7 @@ export function LightboxGallery() {
         />
 
         {/* MOBILE VIEW (Frame 4) — 100dvh strictly fitting without overflow */}
-        <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-4 overflow-hidden relative z-10 text-left">
+        <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-container-sm overflow-hidden relative z-10 text-left">
           {/* Header */}
           <div className="shrink-0 mb-1">
             <p className="font-body text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
@@ -197,14 +197,14 @@ export function LightboxGallery() {
 
         {/* DESKTOP VIEW */}
         <motion.div
-          className="hidden md:block mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg pt-navbar lg:pt-[calc(var(--layout-navbar-height)+2rem)]"
+          className="hidden md:flex flex-col flex-1 h-full justify-between mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg pb-4 lg:pb-6 2xl:pb-12"
           initial="hidden"
           variants={revealContainer}
           viewport={{ once: true, amount: 0.18 }}
           whileInView="visible"
         >
           {/* Header */}
-          <motion.header className="text-left mb-space-12 lg:mb-space-32" variants={revealItem}>
+          <motion.header className="text-left mb-space-12 lg:mb-space-8 2xl:mb-space-12 shrink-0" variants={revealItem}>
             <p className="font-body text-[10px] sm:text-label font-medium uppercase tracking-[0.25em] sm:tracking-[0.35em] text-accent">Gallery</p>
             <h2
               className="mt-1 sm:mt-space-12 font-display text-heading-s sm:text-heading-xl md:text-display-m text-text-inverse"
@@ -218,12 +218,12 @@ export function LightboxGallery() {
           </motion.header>
 
           {/* Grid wrapper — serves as the positioning context for the lightbox */}
-          <div className="relative w-full">
+          <div className="relative w-full flex-1 min-h-0 flex flex-col">
             {/* Grid */}
             <motion.div
               aria-label="StimulAI image gallery"
               className={cn(
-                'grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 w-full transition-[filter,opacity] duration-300',
+                'grid grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 2xl:gap-6 w-full flex-1 min-h-0 transition-[filter,opacity] duration-300',
                 isOpen && 'grayscale opacity-30'
               )}
               variants={revealContainer}
@@ -231,7 +231,7 @@ export function LightboxGallery() {
               {images.map((image, index) => (
                 <motion.button
                   aria-label={`Open ${image.title}`}
-                  className="group relative aspect-[4/3] lg:aspect-[16/11] overflow-hidden rounded-md md:rounded-xl border border-text-inverse/10 bg-text-inverse/[0.035] text-left shadow-hairline transition-[box-shadow,border-color] duration-200 ease-out hover:border-accent/70 hover:shadow-2xl focus-visible:outline-none focus-visible:shadow-focus active:scale-[0.98]"
+                  className="group relative h-full w-full overflow-hidden rounded-md md:rounded-xl border border-text-inverse/10 bg-text-inverse/[0.035] text-left shadow-hairline transition-[box-shadow,border-color] duration-200 ease-out hover:border-accent/70 hover:shadow-2xl focus-visible:outline-none focus-visible:shadow-focus active:scale-[0.98]"
                   key={image.id}
                   onClick={() => openLightbox(index)}
                   type="button"

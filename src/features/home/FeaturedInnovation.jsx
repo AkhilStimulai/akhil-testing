@@ -76,7 +76,7 @@ export function ProductReveal({ imageRef }) {
       <div className="absolute -inset-x-space-64 -top-space-80 h-[24rem] rounded-full bg-accent/10 blur-[80px]" />
 
       <figure className="relative overflow-hidden border border-text-inverse/10 bg-text-inverse/5 shadow-elevated">
-        <div className="aspect-[16/11] overflow-hidden">
+        <div className="aspect-[16/11] lg:aspect-[21/9] 2xl:aspect-[16/9] overflow-hidden">
           <img
             ref={imageRef}
             alt="RCX smart bicycle presented in a dark studio with soft spotlight."
@@ -101,7 +101,7 @@ export function EngineeringTimeline({ activeStage: _activeStage, progressRef: _p
   return (
     <motion.div
       id="rcx-engineering-story"
-      className="mt-section-sm pt-space-40"
+      className="mt-4 sm:mt-section-sm lg:mt-4 2xl:mt-section-sm pt-4 sm:pt-space-40 lg:pt-4 2xl:pt-space-40"
       variants={revealItem}
     >
     </motion.div >
@@ -186,7 +186,7 @@ export function FeaturedInnovation() {
       data-section-id="home-rcx"
       ref={sectionRef}
       aria-labelledby="featured-innovation-title"
-      className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse [--rcx-spotlight-x:48%] py-4 lg:py-0 pt-navbar lg:pt-0"
+      className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse [--rcx-spotlight-x:48%] py-4 lg:py-0 pt-navbar lg:pt-[calc(var(--layout-navbar-height)+1rem)] 2xl:pt-[calc(var(--layout-navbar-height)+3rem)]"
     >
       <div
         aria-hidden="true"
@@ -203,7 +203,7 @@ export function FeaturedInnovation() {
       />
 
       {/* MOBILE VIEW (Frame 3: Intro Section) — Equal 50/50 split fitting 100dvh */}
-      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-4 overflow-hidden relative z-10 text-left gap-2">
+      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-container-sm overflow-hidden relative z-10 text-left gap-2">
         {/* Top Equal Block: Text Content & CTAs */}
         <div className="flex-1 min-h-0 flex flex-col justify-center rounded-xl border border-white/10 bg-[#121212]/80 p-3 relative overflow-hidden">
           <p className="font-body text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">

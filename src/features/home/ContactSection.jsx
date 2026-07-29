@@ -124,7 +124,7 @@ export function ContactCard() {
   return (
     <motion.aside
       aria-label="STIMULAI contact information"
-      className="size-full border border-text-inverse/10 bg-text-inverse/[0.035] p-2.5 sm:p-6 md:p-8 shadow-elevated flex flex-col justify-between"
+      className="size-full border border-text-inverse/10 bg-text-inverse/[0.035] p-2.5 sm:p-6 lg:p-4 shadow-elevated flex flex-col justify-between overflow-y-auto"
       variants={revealItem}
     >
       {/* Header */}
@@ -141,7 +141,7 @@ export function ContactCard() {
       </div>
 
       {/* Contact Details */}
-      <div className="mt-1 sm:mt-8 grid gap-0 flex-1 justify-center flex-col">
+      <div className="mt-1 sm:mt-8 lg:mt-4 grid gap-0 flex-1 justify-center flex-col min-h-0">
         {contactDetails.map(({ href, icon: Icon, label, value }) => (
           <a
             key={label}
@@ -196,7 +196,7 @@ export function ContactMap() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 py-4 sm:py-6 gap-3 sm:gap-4">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 py-4 sm:py-6 lg:py-4 gap-3 sm:gap-4 lg:gap-2">
         <div className="flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-accent/40 bg-accent/10 transition-transform duration-200 group-hover:scale-110">
           <MapPin className="size-3.5 sm:size-5 text-accent" />
         </div>
@@ -224,7 +224,7 @@ export function ContactSection({ showFooter = true }) {
     <section
       data-section-id="home-contact"
       aria-labelledby="home-contact-title"
-      className="relative isolate w-full h-screen-dvh flex flex-col justify-between overflow-hidden bg-surface-inverse text-text-inverse px-0 pt-navbar lg:pt-0"
+      className="relative isolate w-full h-screen-dvh flex flex-col justify-between overflow-hidden bg-surface-inverse text-text-inverse px-0 pt-navbar lg:pt-[calc(var(--layout-navbar-height)+1rem)] 2xl:pt-[calc(var(--layout-navbar-height)+3rem)]"
     >
       {/* Background */}
       <div
@@ -243,7 +243,7 @@ export function ContactSection({ showFooter = true }) {
       />
 
       {/* MOBILE VIEW (Frame 6) — 100dvh strictly fitting without overflow */}
-      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-0 px-4 overflow-hidden relative z-10 text-left">
+      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-0 px-container-sm overflow-hidden relative z-10 text-left">
         {/* Header */}
         <div className="shrink-0 mb-1">
           <p className="font-body text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
@@ -271,7 +271,7 @@ export function ContactSection({ showFooter = true }) {
         </div>
 
         {/* Compact Footer Bar for 100dvh Mobile Fit */}
-        <div className="shrink-0 w-full bg-[#181818] border-t border-white/10 py-1.5 px-4 flex items-center justify-between text-[10px] text-text-inverse/60 -mx-4 w-[calc(100%+2rem)]">
+        <div className="shrink-0 w-full bg-[#181818] border-t border-white/10 py-1.5 px-container-sm flex items-center justify-between text-[10px] text-text-inverse/60">
           <span className="font-body">© {new Date().getFullYear()} STIMULAI Inc. All rights reserved.</span>
           <a href="#home-hero" className="font-mono text-[9px] uppercase tracking-wider text-accent hover:underline">
             Back to Top ↑
@@ -282,14 +282,14 @@ export function ContactSection({ showFooter = true }) {
       {/* DESKTOP VIEW */}
       <div className="hidden md:flex flex-col justify-between w-full h-full">
         <motion.div
-          className="mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg flex-1 flex flex-col justify-center py-1 sm:py-2"
+          className="mx-auto w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg flex-1 flex flex-col justify-between pb-4 lg:pb-6 2xl:pb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.24 }}
           variants={revealContainer}
         >
           {/* Heading */}
-          <motion.div variants={revealItem}>
+          <motion.div variants={revealItem} className="shrink-0 mb-2 lg:mb-4">
             <p className="font-body text-[10px] sm:text-label font-medium uppercase tracking-[0.25em] sm:tracking-[0.35em] text-accent">
               Connect
             </p>
@@ -297,29 +297,29 @@ export function ContactSection({ showFooter = true }) {
             <h2
               id="home-contact-title"
               className="
-                mt-1 sm:mt-space-8 lg:mt-space-12
+                mt-1 sm:mt-space-8 lg:mt-space-4
                 max-w-5xl
                 font-display
                 text-text-inverse
                 text-heading-s
                 sm:text-heading-xl
                 md:text-display-m
+                lg:text-heading-xl
               "
             >
               Let's Build The Future Together.
             </h2>
 
-            <p className="mt-1 sm:mt-space-8 lg:mt-space-12 max-w-2xl font-body text-body-xs sm:text-body-l font-normal text-text-inverse/68 line-clamp-2 sm:line-clamp-none">
+            <p className="mt-1 sm:mt-space-8 lg:mt-space-4 max-w-2xl font-body text-body-xs sm:text-body-l font-normal text-text-inverse/68 line-clamp-2 sm:line-clamp-none">
               Innovators, partners, customers and researchers are invited
               to connect with STIMULAI to shape intelligent engineering
               into real systems.
             </p>
           </motion.div>
 
-          {/* Contact + Map */}
           <motion.div
             variants={revealItem}
-            className="mt-2 sm:mt-space-20 lg:mt-space-28 grid grid-cols-1 gap-2 sm:gap-space-20 lg:grid-cols-2"
+            className="flex-1 min-h-0 mt-2 sm:mt-0 grid grid-cols-1 gap-2 sm:gap-space-20 lg:grid-cols-2 2xl:gap-space-32"
           >
             <ContactCard />
             <ContactMap />

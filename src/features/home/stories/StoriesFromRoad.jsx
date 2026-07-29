@@ -143,7 +143,7 @@ export function StoriesSection({ reviews = roadStories }) {
     <section
       data-section-id="home-reviews"
       aria-labelledby="stories-from-road-title"
-      className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-0"
+      className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-[calc(var(--layout-navbar-height)+1rem)] 2xl:pt-[calc(var(--layout-navbar-height)+3rem)]"
     >
       <div
         aria-hidden="true"
@@ -161,7 +161,7 @@ export function StoriesSection({ reviews = roadStories }) {
 
       {/* ======== MOBILE CAROUSEL VIEW ======== */}
       <div
-        className="flex md:hidden flex-col w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-2 px-2 overflow-hidden relative z-10"
+        className="flex md:hidden flex-col w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-2 px-container-sm overflow-hidden relative z-10"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -304,13 +304,13 @@ export function StoriesSection({ reviews = roadStories }) {
 
       {/* ======== DESKTOP VIEW ======== */}
       <motion.div
-        className="hidden md:flex mx-auto flex-col w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg"
+        className="hidden md:flex mx-auto flex-col flex-1 h-full justify-between w-full max-w-container px-container-sm md:px-container-md lg:px-container-lg pb-4 lg:pb-6 2xl:pb-12"
         initial="hidden"
         variants={revealContainer}
         viewport={{ once: true, amount: 0.18 }}
         whileInView="visible"
       >
-        <div className="w-full pb-2 sm:pb-space-24">
+        <div className="w-full shrink-0 mb-2 sm:mb-space-8 2xl:mb-space-12">
           <motion.header className="max-w-[48rem]" variants={revealItem}>
             <p className="font-body text-[10px] sm:text-label font-medium uppercase tracking-[0.25em] sm:tracking-[0.35em] text-accent">RCX Community</p>
             <h2
@@ -326,7 +326,7 @@ export function StoriesSection({ reviews = roadStories }) {
 
         {/* Desktop grid */}
         <motion.div
-          className={`mt-2 sm:mt-space-32 grid grid-cols-1 sm:grid-cols-2 ${gridColsClass} gap-3 sm:gap-space-24 w-full pb-2 sm:pb-space-16`}
+          className={`mt-2 sm:mt-0 flex-1 min-h-0 grid grid-cols-1 sm:grid-cols-2 ${gridColsClass} gap-3 sm:gap-space-24 2xl:gap-8 w-full`}
           variants={revealContainer}
         >
           {reviews.map((review) => (

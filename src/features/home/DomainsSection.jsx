@@ -33,7 +33,7 @@ const itemVariants = {
 
 export function DomainsSection() {
   return (
-    <section data-section-id="home-domains" className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-0">
+    <section data-section-id="home-domains" className="relative isolate w-full h-screen-dvh flex flex-col justify-center overflow-hidden bg-surface-inverse text-text-inverse py-4 lg:py-0 pt-navbar lg:pt-[calc(var(--layout-navbar-height)+1rem)] 2xl:pt-[calc(var(--layout-navbar-height)+3rem)]">
 
       {/* Background Glow (Desktop only, hidden on mobile to remove shadow overlay) */}
       <div
@@ -42,7 +42,7 @@ export function DomainsSection() {
       />
 
       {/* MOBILE VIEW (Frame 2) — 100dvh strictly fitting without overflow */}
-      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-4 overflow-hidden relative z-10 text-left bg-surface-inverse">
+      <div className="flex md:hidden flex-col justify-between w-full h-screen-dvh pt-[calc(var(--layout-navbar-height)+0.25rem)] pb-3 px-container-sm overflow-hidden relative z-10 text-left bg-surface-inverse">
         {/* Header with normal site Tag and Statement */}
         <div className="shrink-0 mb-1">
           <p className="font-body text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
@@ -55,10 +55,10 @@ export function DomainsSection() {
           </h2>
         </div>
 
-        {/* Stack of 4 Domain Cards filling remaining viewport height */}
-        <div className="flex-1 min-h-0 flex flex-col justify-between gap-1.5 mt-1">
+        {/* 2x2 Grid of Domain Cards for Mobile */}
+        <div className="flex-1 min-h-0 grid grid-cols-2 gap-1.5 mt-1">
           {domains.map((domain) => (
-            <div key={domain.id} className="flex-1 min-h-0 overflow-hidden">
+            <div key={domain.id} className="min-h-0 overflow-hidden">
               <DomainCard domain={domain} />
             </div>
           ))}
@@ -66,7 +66,7 @@ export function DomainsSection() {
       </div>
 
       {/* DESKTOP VIEW */}
-      <div className="hidden md:flex relative mx-auto w-full max-w-container flex-col justify-center px-container-sm md:px-container-md lg:px-container-lg">
+      <div className="hidden md:flex relative mx-auto w-full max-w-container flex-1 flex-col justify-between px-container-sm md:px-container-md lg:px-container-lg pb-4 lg:pb-6 2xl:pb-12">
 
         {/* Header */}
 
@@ -75,7 +75,7 @@ export function DomainsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-space-12 sm:mb-space-24 grid gap-2 lg:grid-cols-2 lg:items-end"
+          className="mb-space-12 sm:mb-space-24 lg:mb-space-8 grid gap-2 lg:grid-cols-2 lg:items-end"
         >
 
           <div>
@@ -89,7 +89,7 @@ export function DomainsSection() {
 
             <motion.h2
               variants={itemVariants}
-              className="mt-1 sm:mt-space-16 font-display text-heading-s sm:text-heading-xl md:text-display-m text-text-inverse leading-tight"
+              className="mt-1 sm:mt-space-16 lg:mt-space-4 font-display text-heading-s sm:text-heading-xl md:text-display-m lg:text-heading-xl text-text-inverse leading-tight"
             >
               Engineering for Today.
               <br className="hidden sm:inline" />
@@ -114,13 +114,13 @@ export function DomainsSection() {
             once: true,
             amount: 0.2,
           }}
-          className="grid grid-cols-2 gap-2 sm:gap-space-16 mt-2 lg:mt-0"
+          className="flex-1 min-h-0 grid grid-cols-2 gap-2 sm:gap-space-16 lg:gap-4 2xl:gap-8 mt-2 lg:mt-0"
         >
           {domains.map((domain) => (
             <motion.div
               key={domain.id}
               variants={itemVariants}
-              className="min-h-0"
+              className="min-h-0 h-full"
             >
               <DomainCard domain={domain} />
             </motion.div>

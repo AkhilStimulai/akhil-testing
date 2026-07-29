@@ -9,7 +9,7 @@ export default function DomainCard({ domain }) {
     <motion.article
       whileHover={{ y: -8 }}
       transition={{ duration: 0.45 }}
-      className="group relative overflow-hidden rounded-[10px] sm:rounded-[22px] border border-white/10 bg-[#0B0B0B] h-full w-full sm:aspect-[2/1]"
+      className="group relative overflow-hidden rounded-[10px] sm:rounded-[22px] border border-white/10 bg-[#0B0B0B] h-full w-full sm:aspect-[2/1] lg:aspect-auto"
     >
       {/* Full card clickable overlay */}
       <Link
@@ -39,12 +39,12 @@ export default function DomainCard({ domain }) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 pointer-events-none flex h-full flex-col justify-between p-2 sm:p-space-24">
+      <div className="relative z-10 pointer-events-none flex h-full flex-col justify-between p-2 sm:p-space-24 lg:p-4 2xl:p-6">
 
         {/* Number & Icon */}
         <div className="flex items-center gap-1.5 sm:gap-4">
 
-          <span className="font-display text-[12px] sm:text-heading-l font-extrabold leading-none text-accent">
+          <span className="font-display text-[12px] sm:text-heading-l lg:text-heading-m 2xl:text-heading-l font-extrabold leading-none text-accent">
             {domain.number}
           </span>
 
@@ -59,12 +59,12 @@ export default function DomainCard({ domain }) {
         {/* Bottom */}
         <div className="max-w-[280px]">
 
-          <h3 className="font-heading text-[11px] sm:text-heading-s text-text-inverse font-bold sm:font-normal leading-tight">
+          <h3 className="font-heading text-[11px] sm:text-heading-s lg:text-body-l 2xl:text-heading-s text-text-inverse font-bold sm:font-normal leading-tight">
             {domain.title}
           </h3>
 
           {domain.subtitle && (
-            <p className="mt-0.5 font-body text-[9px] sm:text-body-small font-normal text-text-inverse/70 line-clamp-1 sm:line-clamp-2">
+            <p className="mt-0.5 font-body text-[9px] sm:text-body-small lg:text-[10px] 2xl:text-body-small font-normal text-text-inverse/70 line-clamp-1 sm:line-clamp-2 lg:line-clamp-3">
               {domain.subtitle}
             </p>
           )}

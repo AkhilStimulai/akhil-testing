@@ -148,11 +148,11 @@
     --shadow-focus: 0 0 0 3px rgb(var(--color-focus) / 0.24);
     --shadow-inset: inset 0 0 0 1px rgb(var(--color-border-muted) / 0.9);
 
-    --container-padding-sm: 1.5rem;
-    --container-padding-md: 1.5rem;
-    --container-padding-lg: 3rem;
-    --layout-container-width: 90rem;
-    --layout-content-width: 72rem;
+    --container-padding-sm: 0.25rem;
+    --container-padding-md: 0.25rem;
+    --container-padding-lg: 1.5rem;
+    --layout-container-width: 100%;
+    --layout-content-width: 100%;
     --layout-prose-width: 44rem;
     --layout-narrow-width: 36rem;
     --layout-navbar-height: 3.5rem;
